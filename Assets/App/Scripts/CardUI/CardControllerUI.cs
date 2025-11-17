@@ -20,11 +20,11 @@ public class CardControllerUI : MonoBehaviour
 
     void ShowTooltip()
     {
-        TooltipBehaviour.instance?.ShowTooltip();
+        TooltipBehaviour.Instance?.ShowTooltip();
     }
     void HidetoolTip()
     {
-        TooltipBehaviour.instance?.HideToolTip();
+        TooltipBehaviour.Instance?.HideToolTip();
     }
 
     void OnClick()
