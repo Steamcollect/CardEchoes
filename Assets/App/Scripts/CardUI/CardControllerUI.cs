@@ -23,4 +23,8 @@ public class CardControllerUI : MonoBehaviour
     {
 
     }
+
+    #region Getter
+    public CardMovementUI GetMovement() { return cardMovementUI; }
+    #endregion
 }
