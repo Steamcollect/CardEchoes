@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData
   cardName: TestCard
   cardDescription: Carte de test
-  cardIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-  cardPrefab: {fileID: 0}
+  cardVisual: {fileID: -5263874647668402371, guid: 72a7ec8e350ee8443bdf8f0f08d2f31b, type: 3}
+  cardPrefab: {fileID: 230999482169439615, guid: 77e2b8a02c6110241956f55cd845c2bd, type: 3}

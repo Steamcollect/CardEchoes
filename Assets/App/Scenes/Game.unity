@@ -658,6 +658,7 @@ GameObject:
   - component: {fileID: 1301047420}
   - component: {fileID: 1301047419}
   - component: {fileID: 1301047421}
+  - component: {fileID: 1301047422}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -735,7 +736,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardControllerUI
   cardData: {fileID: 11400000, guid: 9f7252117f79cd54e82ec5cf74c80b89, type: 2}
-  cardMovementUI: {fileID: 0}
+  trigger: {fileID: 1301047422}
+--- !u!114 &1301047422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301047417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddbb825b825794c4f9833cfeee2ba61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardMovementUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

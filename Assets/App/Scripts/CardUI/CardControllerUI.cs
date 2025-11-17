@@ -6,27 +6,33 @@ public class CardControllerUI : MonoBehaviour
     [SerializeField] SSO_CardData cardData;
 
     [Header("References")]
-    [SerializeField] CardMovementUI cardMovementUI;
+    [SerializeField] CardTriggerUI trigger;
 
     //[Header("Input")]
     //[Header("Output")]
 
-    void Setup()
+    void Start()
     {
-        cardMovementUI._OnPointerEnter += ShowTooltip;
-        cardMovementUI._OnPointerExit += HidetoolTip;
+        trigger._OnPointerEnter += ShowTooltip;
+        trigger._OnPointerExit += HidetoolTip;
+        trigger._OnPointerClick += OnClick;
     }
 
     void ShowTooltip()
     {
-        TooltipBehaviour.instance.ShowTooltip();
+        TooltipBehaviour.instance?.ShowTooltip();
     }
     void HidetoolTip()
     {
-        TooltipBehaviour.instance.HideToolTip();
+        TooltipBehaviour.instance?.HideToolTip();
+    }
+
+    void OnClick()
+    {
+        CardPlacementManager.Instance?.HandleNewCard(cardData);
     }
 
     #region Getter
-    public CardMovementUI GetMovement() { return cardMovementUI; }
+    public CardTriggerUI GetTrigger() { return trigger; }
     #endregion
 }

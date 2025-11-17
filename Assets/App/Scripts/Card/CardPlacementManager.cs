@@ -17,6 +17,8 @@ public class CardPlacementManager : MonoBehaviour
 
     //[Header("Output")]
 
+    public static CardPlacementManager Instance;
+
     private void OnEnable()
     {
         clearCardHandle.action.started += ClearCardHandle;
@@ -29,6 +31,8 @@ public class CardPlacementManager : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
+
+        Instance = this;
     }
 
     private void Update()
