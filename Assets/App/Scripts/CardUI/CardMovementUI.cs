@@ -12,11 +12,11 @@ public class CardMovementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
+        TooltipBehaviour.instance.ShowTooltip();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        TooltipBehaviour.instance.HideToolTip();
     }
 }
