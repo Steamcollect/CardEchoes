@@ -12,11 +12,11 @@ public class CardMovementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
+        _OnPointerEnter?.Invoke();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        _OnPointerExit?.Invoke();
     }
 }
