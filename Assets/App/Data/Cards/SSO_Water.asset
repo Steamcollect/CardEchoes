@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2875e7a506e630240ac5d3ce20984859, type: 3}
-  m_Name: SSO_CardData
+  m_Name: SSO_Water
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData
-  cardName: TestCard
-  cardDescription: Carte de test
+  cardName: Water
+  cardDescription: Carte eau
   cardVisual: {fileID: -5263874647668402371, guid: 72a7ec8e350ee8443bdf8f0f08d2f31b, type: 3}
   cardPrefab: {fileID: 230999482169439615, guid: 77e2b8a02c6110241956f55cd845c2bd, type: 3}

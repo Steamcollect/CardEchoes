@@ -16,4 +16,9 @@ public class Card : MonoBehaviour
         cardData = data;
         graphics.sprite = cardData.cardVisual;
     }
+
+    public SSO_CardData GetData()
+    {
+        return cardData;
+    }
 }

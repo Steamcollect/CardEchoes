@@ -1,10 +1,12 @@
+using ToolBox.Utils;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] SSO_CardData[] startingCards;
-    
+    [SerializeField] int startingCardCount;
+    [SerializeField] SSO_CardData[] cardsDataAvailable;
+
     [Header("References")]
     [SerializeField] CardControllerUI cardUIPrefabs;
     [SerializeField] Transform cardsContent;
@@ -14,15 +16,15 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (SSO_CardData card in startingCards)
+        for (int i = 0; i < startingCardCount; i++)
         {
-            AddNewCard(card);
+            AddNewCard();
         }
     }
 
-    public void AddNewCard(SSO_CardData cardData)
+    public void AddNewCard()
     {
         CardControllerUI newCardUI = Instantiate(cardUIPrefabs, cardsContent);
-        newCardUI.Setup(cardData);
+        newCardUI.Setup(cardsDataAvailable.GetRandom());
     }
 }

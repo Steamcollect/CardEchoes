@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardControllerUI
   cardData: {fileID: 11400000, guid: 9f7252117f79cd54e82ec5cf74c80b89, type: 2}
+  image: {fileID: 6198631383228636490}
   trigger: {fileID: 6297978213312952954}
 --- !u!114 &6297978213312952954
 MonoBehaviour:

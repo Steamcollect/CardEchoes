@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardControllerUI : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class CardControllerUI : MonoBehaviour
     [SerializeField] SSO_CardData cardData;
 
     [Header("References")]
+    [SerializeField] Image image;
     [SerializeField] CardTriggerUI trigger;
 
     //[Header("Input")]
@@ -14,6 +16,7 @@ public class CardControllerUI : MonoBehaviour
     public void Setup(SSO_CardData data)
     {
         cardData = data;
+        image.sprite = data.cardVisual;
 
         trigger._OnPointerEnter += ShowTooltip;
         trigger._OnPointerExit += HidetoolTip;
