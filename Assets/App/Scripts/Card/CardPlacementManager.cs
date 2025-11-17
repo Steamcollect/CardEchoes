@@ -112,21 +112,39 @@ public class CardPlacementManager : MonoBehaviour
 
     IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
     {
-        List<Card> cardsToCheck = new List<Card>(cards.Values);
+        int maxIteration = 0;
+        foreach (var kvp in cards)
+        {
+            Vector2Int pos = kvp.Key;
 
+            int value = Mathf.Max(Mathf.Abs(pos.x), Mathf.Abs(pos.y));
+
+            if (value > maxIteration)
+                maxIteration = value;
+        }
+        if(maxIteration <= 0) yield break;
+
+        int iterations = 1;
         do
         {
-            List<Card> nextCardsToCheck = new List<Card>();
-
-            foreach (Card card in cardsToCheck)
+            for (int dx = -iterations; dx <= iterations; dx++)
             {
-                card.GetData().ApplyEffectToNeighbour(card);
-            }
+                int dy = iterations - Mathf.Abs(dx);
 
-            cardsToCheck = new List<Card>(nextCardsToCheck);
+                Vector2Int pos1 = new Vector2Int(dx, dy);
+                Card card = cards[pos1];
+                card.GetData().ApplyEffectToNeighbour(card);
+
+                if (dy != 0)
+                {
+                    Vector2Int pos2 = new Vector2Int(dx, -dy);
+                    card = cards[pos2];
+                    card.GetData().ApplyEffectToNeighbour(card);
+                }
+            }
 
             yield return new WaitForSeconds(timeBetweenWave);
         }
-        while(cardsToCheck.Count > 0);
+        while(iterations <= maxIteration);
     }
 }
