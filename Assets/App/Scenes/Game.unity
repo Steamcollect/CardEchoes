@@ -643,6 +643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982c2777d31647c479d5b7c6b64787a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlacementManager
+  gridSize: 1
+  mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &1301047417
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +657,7 @@ GameObject:
   - component: {fileID: 1301047418}
   - component: {fileID: 1301047420}
   - component: {fileID: 1301047419}
+  - component: {fileID: 1301047421}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -718,6 +722,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301047417}
   m_CullTransparentMesh: 1
+--- !u!114 &1301047421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301047417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9652fcffb5fe794dba6c5fac20fb0bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardControllerUI
+  cardData: {fileID: 11400000, guid: 9f7252117f79cd54e82ec5cf74c80b89, type: 2}
+  cardMovementUI: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
