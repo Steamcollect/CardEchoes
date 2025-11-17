@@ -585,6 +585,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Camera",
+            "id": "8b5a969d-00b8-47ad-b506-3aa0e825c0fd",
+            "actions": [
+                {
+                    "name": "Drag",
+                    "type": "Button",
+                    "id": "807a1e0d-0bbb-4304-b8e2-47b1545ecfbd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dc24d379-a29a-45b3-9fb1-fb92b38e5ddc",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
