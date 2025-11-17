@@ -195,9 +195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   startingCardCount: 5
   cardsDataAvailable:
-  - {fileID: 11400000, guid: 4adb1dc16b0616248af083c026fad9bd, type: 2}
-  - {fileID: 11400000, guid: 3300984ab1de92d4da5e07f73149e1b0, type: 2}
-  - {fileID: 11400000, guid: 9f7252117f79cd54e82ec5cf74c80b89, type: 2}
+  - {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
+  - {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
+  - {fileID: 11400000, guid: f38226e80e71e2d4990a74a6c2397869, type: 2}
+  - {fileID: 11400000, guid: f2f75059609fb234d90cf6803b657a62, type: 2}
+  - {fileID: 11400000, guid: 4c2d9ad83b63e4341a0f553a292cced3, type: 2}
   cardUIPrefabs: {fileID: 5914906418974657700, guid: 34de509c13fe9dd41915f0395ba09f9b, type: 3}
   cardsContent: {fileID: 6056357130987632696}
 --- !u!1 &7623823864255117385
