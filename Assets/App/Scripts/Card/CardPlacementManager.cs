@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -80,9 +81,15 @@ public class CardPlacementManager : MonoBehaviour
             return;
         }
 
-        cards.Add(currentCardHandleGridPos, currentCardHandle);
-        Destroy(currentCardHandleUI.gameObject);
+        if(cards.ContainsKey(currentCardHandleGridPos))
+        {
+            Destroy(cards[currentCardHandleGridPos].gameObject);
+            cards[currentCardHandleGridPos] = currentCardHandle;
+        }
+        else
+            cards.Add(currentCardHandleGridPos, currentCardHandle);
 
+        Destroy(currentCardHandleUI.gameObject);
         currentCardHandle = null;
     }
     void ClearCardHandle(InputAction.CallbackContext context)
