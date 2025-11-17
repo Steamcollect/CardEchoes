@@ -7,5 +7,7 @@ public class SSO_CardData : ScriptableObject
     [TextArea] public string cardDescription;
     public Sprite cardVisual;
 
+    public SSO_CardsAvailable cardsAvailable;
+
     public virtual void ApplyEffectToNeighbour(Card neighbour) { }
 }
