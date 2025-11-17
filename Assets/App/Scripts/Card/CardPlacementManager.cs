@@ -8,6 +8,7 @@ public class CardPlacementManager : MonoBehaviour
     [Header("Settings")]
     public int gridSize = 1;
     bool canPlaceCard = true;
+    [SerializeField] float timeBetweenWave = .2f;
 
     Vector2Int currentCardHandleGridPos;
 
@@ -89,8 +90,17 @@ public class CardPlacementManager : MonoBehaviour
         else
             cards.Add(currentCardHandleGridPos, currentCardHandle);
 
+        List<Card> neighbours = new List<Card>();
+        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.up * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.up]);
+        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.down * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.down]);
+        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.left * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.left]);
+        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.right * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.right]);
+        currentCardHandle.SetNeighbours(neighbours.ToArray());
+
         Destroy(currentCardHandleUI.gameObject);
         currentCardHandle = null;
+
+        StartCoroutine(CheckCardsNeighbour(currentCardHandleGridPos));
     }
     void ClearCardHandle(InputAction.CallbackContext context)
     {
@@ -99,4 +109,24 @@ public class CardPlacementManager : MonoBehaviour
     }
 
     public void SetCanPlaceCard(bool value) { canPlaceCard = value; }
+
+    IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
+    {
+        List<Card> cardsToCheck = new List<Card>(cards.Values);
+
+        do
+        {
+            List<Card> nextCardsToCheck = new List<Card>();
+
+            foreach (Card card in cardsToCheck)
+            {
+                card.GetData().ApplyEffectToNeighbour(card);
+            }
+
+            cardsToCheck = new List<Card>(nextCardsToCheck);
+
+            yield return new WaitForSeconds(timeBetweenWave);
+        }
+        while(cardsToCheck.Count > 0);
+    }
 }

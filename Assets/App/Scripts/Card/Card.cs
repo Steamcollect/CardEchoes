@@ -5,7 +5,8 @@ public class Card : MonoBehaviour
     //[Header("Settings")]
     [Header("References")]
     [SerializeField] SpriteRenderer graphics;
-    
+    Card[] neighbours;
+
     SSO_CardData cardData;
     
     //[Header("Input")]
@@ -23,6 +24,11 @@ public class Card : MonoBehaviour
         graphics.sprite = cardData.cardVisual;
     }
 
+    public void SetNeighbours(Card[] neighbours)
+    {
+        this.neighbours = neighbours;
+    }
+
     public SSO_CardData GetData()
     {
         return cardData;
@@ -31,5 +37,10 @@ public class Card : MonoBehaviour
     public SpriteRenderer GetGraphics()
     {
         return graphics;
+    }
+
+    public Card[] GetNeighbours()
+    {
+        return neighbours;
     }
 }

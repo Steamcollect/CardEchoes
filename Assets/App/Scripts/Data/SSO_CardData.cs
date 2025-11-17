@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SSO_CardData : ScriptableObject
@@ -9,5 +8,5 @@ public class SSO_CardData : ScriptableObject
 
     public SSO_CardsAvailable cardsAvailable;
 
-    public virtual void ApplyEffectToNeighbour(Card neighbour) { }
+    public virtual void ApplyEffectToNeighbour(Card card) { }
 }
