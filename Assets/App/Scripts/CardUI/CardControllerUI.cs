@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CardControllerUI : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] SSO_CardData cardData;
+
     [Header("References")]
     [SerializeField] CardMovementUI cardMovementUI;
 
