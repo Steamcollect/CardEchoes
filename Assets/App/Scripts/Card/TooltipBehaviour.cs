@@ -7,13 +7,13 @@ public class TooltipBehaviour : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-    public static TooltipBehaviour instance;
+    public static TooltipBehaviour Instance;
 
     [SerializeField] private GameObject tooltip;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     public void ShowTooltip()

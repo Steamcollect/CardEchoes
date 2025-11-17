@@ -16,9 +16,20 @@ public class TooltipManager : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-
-    private void Update()
+    void SetText(string description, string name = "")
     {
+        if (name == "")
+        {
+            cardNameText.gameObject.SetActive(false);
+        } else
+        {
+            cardNameText.gameObject.SetActive(true);
+            cardNameText.text = name;
+            
+        }
+
+        cardDescriptionText.text = description;
+
         int nameLength = cardNameText.text.Length;
         int descriptionLength = cardDescriptionText.text.Length;
         cardLayout.enabled = (nameLength > maxCharacter || descriptionLength > maxCharacter) ? true : false;
