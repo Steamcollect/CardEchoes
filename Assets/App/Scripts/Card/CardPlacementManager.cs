@@ -58,6 +58,7 @@ public class CardPlacementManager : MonoBehaviour
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
         currentCardHandleGridPos = Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos)) * gridSize;
+        currentCardHandle.GetGraphics().sortingOrder = -currentCardHandleGridPos.y;
 
         currentCardHandle.transform.position = (Vector2)currentCardHandleGridPos;
     }

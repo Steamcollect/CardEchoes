@@ -21,4 +21,9 @@ public class Card : MonoBehaviour
     {
         return cardData;
     }
+
+    public SpriteRenderer GetGraphics()
+    {
+        return graphics;
+    }
 }
