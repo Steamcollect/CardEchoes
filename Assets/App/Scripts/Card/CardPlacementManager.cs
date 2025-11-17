@@ -131,13 +131,13 @@ public class CardPlacementManager : MonoBehaviour
             {
                 int dy = iterations - Mathf.Abs(dx);
 
-                Vector2Int pos1 = new Vector2Int(dx, dy);
+                Vector2Int pos1 = new Vector2Int(startingPos.x + dx, startingPos.y + dy);
                 Card card = cards[pos1];
                 card.GetData().ApplyEffectToNeighbour(card);
 
                 if (dy != 0)
                 {
-                    Vector2Int pos2 = new Vector2Int(dx, -dy);
+                    Vector2Int pos2 = new Vector2Int(startingPos.x + dx, startingPos.y + -dy);
                     card = cards[pos2];
                     card.GetData().ApplyEffectToNeighbour(card);
                 }
