@@ -7,7 +7,6 @@ public class TooltipManager : MonoBehaviour
     //[Header("Settings")]
     //[Header("References")]
 
-    [SerializeField] private SSO_CardData cardData;
     [SerializeField] private TMP_Text cardNameText, cardDescriptionText;
 
     [SerializeField] private LayoutElement cardLayout;
@@ -16,7 +15,7 @@ public class TooltipManager : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-    void SetText(string description, string name = "")
+    public void SetText(string description, string name = "")
     {
         if (name == "")
         {

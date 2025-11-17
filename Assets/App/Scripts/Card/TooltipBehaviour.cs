@@ -9,20 +9,25 @@ public class TooltipBehaviour : MonoBehaviour
 
     public static TooltipBehaviour Instance;
 
-    [SerializeField] private GameObject tooltip;
+    [SerializeField] private TooltipManager tooltip;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    public void ShowTooltip()
+    public void ShowTooltip(SSO_CardData cardData, Vector3 triggerPosition)
     {
-        tooltip.SetActive(true);
+        tooltip.SetText(cardData.cardDescription, cardData.cardName);
+        tooltip.gameObject.SetActive(true);
+        RectTransform tooltipRect = tooltip.gameObject.GetComponent<RectTransform>();
+        float heightRect = tooltipRect.rect.height / 2;
+        Vector3 offsetPosition = triggerPosition + new Vector3(0, heightRect, 0);
+        tooltip.transform.position = offsetPosition;
     }
 
     public void HideToolTip()
     {
-        tooltip.SetActive(false);
+        tooltip.gameObject.SetActive(false);
     }
 }
