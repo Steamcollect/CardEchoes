@@ -5,13 +5,17 @@ using UnityEngine.InputSystem;
 public class CardPlacementManager : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float gridSize = 1;
+    public int gridSize = 1;
     bool canPlaceCard = true;
 
-    //[Header("References")]
+    Vector2Int currentCardHandleGridPos;
+
+    [Header("References")]
+    [SerializeField] Card cardPrefab;
+
     Camera cam;
 
-    Dictionary<Vector2 /*Position*/, Card> cards = new Dictionary<Vector2 , Card>();
+    Dictionary<Vector2Int /*Position*/, Card> cards = new Dictionary<Vector2Int, Card>();
 
     CardControllerUI currentCardHandleUI;
     Card currentCardHandle;
@@ -53,9 +57,9 @@ public class CardPlacementManager : MonoBehaviour
         if (!currentCardHandle) return;
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
-        Vector2 gridPos = ((Vector2)Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos))) * gridSize;
+        currentCardHandleGridPos = Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos)) * gridSize;
 
-        currentCardHandle.transform.position = gridPos;
+        currentCardHandle.transform.position = (Vector2)currentCardHandleGridPos;
     }
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
@@ -63,7 +67,8 @@ public class CardPlacementManager : MonoBehaviour
         if (currentCardHandle) Destroy(currentCardHandle.gameObject);
 
         currentCardHandleUI = ui;
-        currentCardHandle = Instantiate(card.cardPrefab, transform);
+        currentCardHandle = Instantiate(cardPrefab, transform);
+        currentCardHandle.Setup(card);
     }
 
     void PlaceCardHandle(InputAction.CallbackContext context)
@@ -74,7 +79,7 @@ public class CardPlacementManager : MonoBehaviour
             return;
         }
 
-        cards.Add(currentCardHandle.transform.position, currentCardHandle);
+        cards.Add(currentCardHandleGridPos, currentCardHandle);
         Destroy(currentCardHandleUI.gameObject);
 
         currentCardHandle = null;
