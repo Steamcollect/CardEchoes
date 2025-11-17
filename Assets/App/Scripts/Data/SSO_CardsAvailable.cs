@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SSO_CardsAvailable", menuName = "SSO/Card/SSO_CardsAvailable")]
+[CreateAssetMenu(fileName = "SSO_CardsAvailable", menuName = "SSO/Cards/SSO_CardsAvailable")]
 public class SSO_CardsAvailable : ScriptableObject
 {
     public SSO_CardData Water;
