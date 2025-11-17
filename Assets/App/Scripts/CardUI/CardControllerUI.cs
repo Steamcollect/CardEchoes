@@ -19,11 +19,11 @@ public class CardControllerUI : MonoBehaviour
 
     void ShowTooltip()
     {
-
+        TooltipBehaviour.instance.ShowTooltip();
     }
     void HidetoolTip()
     {
-
+        TooltipBehaviour.instance.HideToolTip();
     }
 
     #region Getter
