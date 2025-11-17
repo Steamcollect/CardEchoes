@@ -11,8 +11,10 @@ public class CardControllerUI : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
-    void Start()
+    public void Setup(SSO_CardData data)
     {
+        cardData = data;
+
         trigger._OnPointerEnter += ShowTooltip;
         trigger._OnPointerExit += HidetoolTip;
         trigger._OnPointerClick += OnClick;
@@ -29,7 +31,7 @@ public class CardControllerUI : MonoBehaviour
 
     void OnClick()
     {
-        CardPlacementManager.Instance?.HandleNewCard(cardData);
+        CardPlacementManager.Instance?.HandleNewCard(cardData, this);
     }
 
     #region Getter

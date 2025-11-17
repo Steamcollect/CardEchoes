@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 
-public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     //[Header("Settings")]
     //[Header("References")]
@@ -10,8 +10,9 @@ public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [Header("Output")]
     public Action _OnPointerEnter, _OnPointerExit, _OnPointerClick;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
+        CardPlacementManager.Instance?.SetCanPlaceCard(false);        
         _OnPointerClick?.Invoke();
     }
 
