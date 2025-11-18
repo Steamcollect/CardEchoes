@@ -1,9 +1,13 @@
-using JetBrains.Annotations;
+using DG.Tweening;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    //[Header("Settings")]
+    [Header("Settings")]
+    [SerializeField] float shakeAngle = 15;
+    [SerializeField] float shakeDuration = 0.2f;
+    [SerializeField] float yOffset;
+
     [Header("References")]
     [SerializeField] MeshRenderer graphics;
     Card[] neighbours;
@@ -23,6 +27,8 @@ public class Card : MonoBehaviour
 
     public void ChangeData(SSO_CardData data)
     {
+        transform.DOMoveY(transform.position.y + yOffset, shakeDuration / 2).SetLoops(2, LoopType.Yoyo);
+        transform.DOPunchRotation(Vector3.up * shakeAngle, shakeDuration, 20, 1);
         cardData = data;
         graphics.material.mainTexture = cardData.cardVisualT;
     }

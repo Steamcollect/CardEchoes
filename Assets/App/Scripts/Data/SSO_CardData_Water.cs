@@ -15,17 +15,18 @@ public class SSO_CardData_Water : SSO_CardData
             if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 1)
             {
                 currentPriority = 1;
-                currentData = cardsAvailable.Swamp;
+                currentData = cardsAvailable.Water;
+                break;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 2)
             {
                 currentPriority = 2;
-                currentData = cardsAvailable.Plant;
+                currentData = cardsAvailable.Swamp;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
             {
                 currentPriority = 3;
-                currentData = cardsAvailable.Tree;
+                currentData = cardsAvailable.Water;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 4)
             {
@@ -39,6 +40,9 @@ public class SSO_CardData_Water : SSO_CardData
             }
         }
 
+        if (currentData != cardsAvailable.Water)
+        {
         card.ChangeData(currentData);
+        }
     }
 }
