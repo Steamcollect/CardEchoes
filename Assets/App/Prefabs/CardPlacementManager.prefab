@@ -46,7 +46,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardPlacementManager
   gridSize: 1
   timeBetweenWave: 0.09
+  minMaxXCadPos: {x: -7, y: 7}
+  minMaxYCadPos: {x: -7, y: 0}
   cardPrefab: {fileID: 1352476555276159746, guid: 44a163f3cfd28ee4aab4d8f0e8717a3b, type: 3}
+  defaultCardsData:
+  - position: {x: 0, y: -3}
+    cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
+  - position: {x: -1, y: -3}
+    cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
+  - position: {x: 1, y: -3}
+    cardData: {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
+  - position: {x: 1, y: -2}
+    cardData: {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
+  - position: {x: 0, y: -2}
+    cardData: {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
+  - position: {x: -1, y: -2}
+    cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
+  - position: {x: -1, y: -4}
+    cardData: {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
+  - position: {x: 0, y: -4}
+    cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
+  - position: {x: 1, y: -4}
+    cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
   mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   placeCardHandle: {fileID: -978304505037387235, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

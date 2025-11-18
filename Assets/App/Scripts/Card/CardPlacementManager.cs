@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ToolBox.Dev;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static CardPlacementManager;
 
 public class CardPlacementManager : MonoBehaviour
 {
@@ -10,10 +12,21 @@ public class CardPlacementManager : MonoBehaviour
     bool canPlaceCard = true;
     [SerializeField] float timeBetweenWave = .2f;
 
+    [Space(10)]
+    [SerializeField] Vector2Int minMaxXCadPos;
+    [SerializeField] Vector2Int minMaxYCadPos;
     Vector2Int currentCardHandleGridPos;
 
     [Header("References")]
     [SerializeField] Card cardPrefab;
+    [SerializeField, Inline] StartCard[] defaultCardsData;
+
+    [System.Serializable]
+    public struct StartCard
+    {
+        public Vector2Int position;
+        public SSO_CardData cardData;
+    }
 
     Camera cam;
 
@@ -49,6 +62,52 @@ public class CardPlacementManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        foreach (StartCard startCard in defaultCardsData)
+        {
+            Card card = Instantiate(cardPrefab, transform);
+            card.Setup(startCard.cardData);
+            card.transform.position = new Vector3(startCard.position.x * gridSize, 0, startCard.position.y * gridSize);
+            cards.Add(startCard.position, card);
+        }
+
+        // Setup neighbours
+        foreach (var kvp in cards)
+        {
+            Vector2Int pos = kvp.Key;
+            Card card = kvp.Value;
+
+            List<Card> neighbours = new List<Card>();
+
+            Vector2Int[] dirs = {
+            Vector2Int.up * gridSize,
+            Vector2Int.down * gridSize,
+            Vector2Int.left * gridSize,
+            Vector2Int.right * gridSize
+        };
+
+            foreach (var dir in dirs)
+            {
+                Vector2Int nPos = pos + dir;
+                if (cards.ContainsKey(nPos))
+                {
+                    Card neighbour = cards[nPos];
+                    neighbours.Add(neighbour);
+
+                    // Ajouter la carte courante comme voisin de son voisin
+                    List<Card> nList = new List<Card>(neighbour.GetNeighbours() ?? new Card[0]);
+                    if (!nList.Contains(card))
+                        nList.Add(card);
+                    neighbour.SetNeighbours(nList.ToArray());
+                }
+            }
+
+            card.SetNeighbours(neighbours.ToArray());
+        }
+    }
+
+
     private void Update()
     {
         MoveCurrentCardHandle();
@@ -69,19 +128,19 @@ public class CardPlacementManager : MonoBehaviour
         {
             Vector3 hitPoint = ray.GetPoint(enter);
 
-            // Convertir en grille (x, y mais ta grille est X/Z)
             Vector2Int gridPos = new Vector2Int(
                 Mathf.RoundToInt(hitPoint.x / gridSize),
                 Mathf.RoundToInt(hitPoint.z / gridSize)
             );
 
+            gridPos.x = Mathf.Clamp(gridPos.x, minMaxXCadPos.x, minMaxXCadPos.y);
+            gridPos.y = Mathf.Clamp(gridPos.y, minMaxYCadPos.x, minMaxYCadPos.y);
+
             currentCardHandleGridPos = gridPos;
 
-            // Set position réelle dans le monde
             Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
             currentCardHandle.transform.position = worldPos;
 
-            // Tri d’affichage si tu veux toujours l’ordre par profondeur
             currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
         }
     }
@@ -203,5 +262,26 @@ public class CardPlacementManager : MonoBehaviour
         while(iterations <= maxIteration);
 
         InventoryManager.Instance.AddNewCard();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(new Vector3(minMaxXCadPos.x * gridSize, 0, minMaxYCadPos.x * gridSize),
+                        new Vector3(minMaxXCadPos.y * gridSize, 0, minMaxYCadPos.x * gridSize));
+        Gizmos.DrawLine(new Vector3(minMaxXCadPos.y * gridSize, 0, minMaxYCadPos.y * gridSize),
+                        new Vector3(minMaxXCadPos.y * gridSize, 0, minMaxYCadPos.x * gridSize));
+        
+        Gizmos.DrawLine(new Vector3(minMaxXCadPos.x * gridSize, 0, minMaxYCadPos.y * gridSize),
+                        new Vector3(minMaxXCadPos.x * gridSize, 0, minMaxYCadPos.x * gridSize));
+        
+        Gizmos.DrawLine(new Vector3(minMaxXCadPos.x * gridSize, 0, minMaxYCadPos.y * gridSize),
+                        new Vector3(minMaxXCadPos.y * gridSize, 0, minMaxYCadPos.y * gridSize));
+
+        Gizmos.color = Color.red;
+        foreach (StartCard card in defaultCardsData)
+        {
+            Gizmos.DrawSphere(new Vector3(card.position.x * gridSize, 0, card.position.y * gridSize), .1f);
+        }
     }
 }

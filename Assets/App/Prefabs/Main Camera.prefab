@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc446740212c7142a1fd8968ba4d25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
-  minMaxX: {x: -10, y: 10}
-  minMaxY: {x: -10, y: 10}
-  moveSpeed: 80
+  minMaxX: {x: -5, y: 5}
+  minMaxY: {x: -10, y: -4}
+  moveSpeed: 150
   smoothTime: 0.15
   moveInput: {fileID: -968839699552669771, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

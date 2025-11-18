@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private InputActionReference moveInput;
 
-    private Vector3 velocity = Vector3.zero;   // utilisé par SmoothDamp
+    private Vector3 velocity = Vector3.zero;
 
     private void Update()
     {

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3dc49fe2cabdd640814feac50ebbfa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  shakeAngle: 15
+  shakeAngle: 7
   shakeDuration: 0.2
   yOffset: 0.2
   graphics: {fileID: 5589720093288498285}
