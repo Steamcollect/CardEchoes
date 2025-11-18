@@ -59,10 +59,31 @@ public class CardPlacementManager : MonoBehaviour
         if (!currentCardHandle) return;
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
-        currentCardHandleGridPos = Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos)) * gridSize;
-        currentCardHandle.GetGraphics().sortingOrder = -currentCardHandleGridPos.y;
 
-        currentCardHandle.transform.position = (Vector2)currentCardHandleGridPos;
+        // Ray depuis la caméra
+        Ray ray = cam.ScreenPointToRay(mousePos);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan Y = 0
+
+        float enter;
+        if (groundPlane.Raycast(ray, out enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            // Convertir en grille (x, y mais ta grille est X/Z)
+            Vector2Int gridPos = new Vector2Int(
+                Mathf.RoundToInt(hitPoint.x / gridSize),
+                Mathf.RoundToInt(hitPoint.z / gridSize)
+            );
+
+            currentCardHandleGridPos = gridPos;
+
+            // Set position réelle dans le monde
+            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
+            currentCardHandle.transform.position = worldPos;
+
+            // Tri d’affichage si tu veux toujours l’ordre par profondeur
+            currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
+        }
     }
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
@@ -122,9 +143,15 @@ public class CardPlacementManager : MonoBehaviour
             if (value > maxIteration)
                 maxIteration = value;
         }
-        if(maxIteration <= 0) yield break;
+        if(maxIteration <= 0)
+        {
+            Debug.Log("No neighbours to check.");
+            yield break;
+        }
 
         int iterations = 1;
+
+        Card card;
         do
         {
             for (int dx = -iterations; dx <= iterations; dx++)
@@ -132,19 +159,30 @@ public class CardPlacementManager : MonoBehaviour
                 int dy = iterations - Mathf.Abs(dx);
 
                 Vector2Int pos1 = new Vector2Int(startingPos.x + dx, startingPos.y + dy);
-                Card card = cards[pos1];
-                card.GetData().ApplyEffectToNeighbour(card);
+
+                
+                if (cards.ContainsKey(pos1))
+                {
+                    card = cards[pos1];
+                    card.GetData().ApplyEffectToNeighbour(card);
+                }
 
                 if (dy != 0)
                 {
                     Vector2Int pos2 = new Vector2Int(startingPos.x + dx, startingPos.y + -dy);
-                    card = cards[pos2];
-                    card.GetData().ApplyEffectToNeighbour(card);
+
+                    if (cards.ContainsKey(pos2))
+                    {
+                        card = cards[pos2];
+                        card.GetData().ApplyEffectToNeighbour(card);
+                    }
                 }
             }
 
             yield return new WaitForSeconds(timeBetweenWave);
         }
         while(iterations <= maxIteration);
+
+        InventoryManager.Instance.AddNewCard();
     }
 }
