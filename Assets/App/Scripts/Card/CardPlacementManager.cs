@@ -59,31 +59,10 @@ public class CardPlacementManager : MonoBehaviour
         if (!currentCardHandle) return;
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
+        currentCardHandleGridPos = Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos)) * gridSize;
+        currentCardHandle.GetGraphics().sortingOrder = -currentCardHandleGridPos.y;
 
-        // Ray depuis la caméra
-        Ray ray = cam.ScreenPointToRay(mousePos);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan Y = 0
-
-        float enter;
-        if (groundPlane.Raycast(ray, out enter))
-        {
-            Vector3 hitPoint = ray.GetPoint(enter);
-
-            // Convertir en grille (x, y mais ta grille est X/Z)
-            Vector2Int gridPos = new Vector2Int(
-                Mathf.RoundToInt(hitPoint.x / gridSize),
-                Mathf.RoundToInt(hitPoint.z / gridSize)
-            );
-
-            currentCardHandleGridPos = gridPos;
-
-            // Set position réelle dans le monde
-            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
-            currentCardHandle.transform.position = worldPos;
-
-            // Tri d’affichage si tu veux toujours l’ordre par profondeur
-            currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
-        }
+        currentCardHandle.transform.position = (Vector2)currentCardHandleGridPos;
     }
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
@@ -131,64 +110,41 @@ public class CardPlacementManager : MonoBehaviour
 
     public void SetCanPlaceCard(bool value) { canPlaceCard = value; }
 
-    IEnumerator CheckCardsNeighbour(Vector2Int startingPoint)
+    IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
     {
-        // Ensemble des positions déjà visitées (pour ne jamais repasser deux fois sur une carte)
-        HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
-
-        // Liste des cartes à traiter pour cette vague
-        List<Vector2Int> currentWave = new List<Vector2Int>();
-
-        // Ajout des cartes adjacentes au point initial
-        Vector2Int[] dirs = new Vector2Int[]
+        int maxIteration = 0;
+        foreach (var kvp in cards)
         {
-        Vector2Int.up * gridSize,
-        Vector2Int.down * gridSize,
-        Vector2Int.left * gridSize,
-        Vector2Int.right * gridSize
-        };
+            Vector2Int pos = kvp.Key;
 
-        foreach (var dir in dirs)
-        {
-            Vector2Int pos = startingPoint + dir;
-            if (cards.ContainsKey(pos))
-            {
-                currentWave.Add(pos);
-                visited.Add(pos);
-            }
+            int value = Mathf.Max(Mathf.Abs(pos.x), Mathf.Abs(pos.y));
+
+            if (value > maxIteration)
+                maxIteration = value;
         }
+        if(maxIteration <= 0) yield break;
 
-        // --- Début des vagues BFS ---
-        while (currentWave.Count > 0)
+        int iterations = 1;
+        do
         {
-            List<Vector2Int> nextWave = new List<Vector2Int>();
-
-            foreach (var pos in currentWave)
+            for (int dx = -iterations; dx <= iterations; dx++)
             {
-                Card card = cards[pos];
+                int dy = iterations - Mathf.Abs(dx);
 
-                // Étape 1 : appliquer effet
+                Vector2Int pos1 = new Vector2Int(startingPos.x + dx, startingPos.y + dy);
+                Card card = cards[pos1];
                 card.GetData().ApplyEffectToNeighbour(card);
 
-                // Étape 2 : ajouter toutes les cartes adjacentes non visitées
-                foreach (var dir in dirs)
+                if (dy != 0)
                 {
-                    Vector2Int newPos = pos + dir;
-
-                    if (cards.ContainsKey(newPos) && !visited.Contains(newPos))
-                    {
-                        visited.Add(newPos);
-                        nextWave.Add(newPos);
-                    }
+                    Vector2Int pos2 = new Vector2Int(startingPos.x + dx, startingPos.y + -dy);
+                    card = cards[pos2];
+                    card.GetData().ApplyEffectToNeighbour(card);
                 }
             }
 
-            // On passe à la vague suivante
-            currentWave = nextWave;
-
-            // Attente entre chaque vague
             yield return new WaitForSeconds(timeBetweenWave);
         }
+        while(iterations <= maxIteration);
     }
-
 }
