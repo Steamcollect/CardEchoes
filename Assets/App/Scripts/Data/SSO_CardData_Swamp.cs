@@ -39,9 +39,6 @@ public class SSO_CardData_Swamp : SSO_CardData
             }
         }
 
-        if (currentData != cardsAvailable.Swamp)
-        {
-            card.ChangeData(currentData);
-        }
+        card.ChangeData(currentData);
     }
 }

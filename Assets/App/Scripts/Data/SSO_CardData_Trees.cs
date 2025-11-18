@@ -39,9 +39,6 @@ public class SSO_CardData_Trees : SSO_CardData
             }
         }
 
-        if (currentData != cardsAvailable.Tree)
-        {
-            card.ChangeData(currentData);
-        }
+        card.ChangeData(currentData);
     }
 }

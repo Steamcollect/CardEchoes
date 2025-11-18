@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3dc49fe2cabdd640814feac50ebbfa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  shakeAngle: 7
+  shakeAngle: 12
   shakeDuration: 0.2
-  yOffset: 0.2
+  yOffset: 0.4
   iconGraphics: {fileID: 5589720093288498285}
   visualGraphics: {fileID: 8054837398490270919}
 --- !u!1 &8521555965300860712

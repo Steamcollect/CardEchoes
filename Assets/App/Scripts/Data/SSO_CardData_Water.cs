@@ -40,9 +40,6 @@ public class SSO_CardData_Water : SSO_CardData
             }
         }
 
-        if (currentData != cardsAvailable.Water)
-        {
         card.ChangeData(currentData);
-        }
     }
 }

@@ -40,9 +40,6 @@ public class SSO_CardData_Minerals : SSO_CardData
             }
         }
 
-        if (currentData != cardsAvailable.Mineral)
-        {
-            card.ChangeData(currentData);
-        }
+        card.ChangeData(currentData);
     }
 }

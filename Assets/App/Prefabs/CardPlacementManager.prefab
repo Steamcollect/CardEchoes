@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlacementManager
   gridSize: 1
-  timeBetweenWave: 0.09
+  timeBetweenWave: 0.05
   minMaxXCadPos: {x: -7, y: 7}
   minMaxYCadPos: {x: -7, y: 0}
   cardPrefab: {fileID: 1352476555276159746, guid: 44a163f3cfd28ee4aab4d8f0e8717a3b, type: 3}
