@@ -133,21 +133,24 @@ public class CardPlacementManager : MonoBehaviour
 
     IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
     {
+        Debug.Log("Checking neighbours...");
+
         int maxIteration = 0;
         foreach (var kvp in cards)
         {
             Vector2Int pos = kvp.Key;
 
-            int value = Mathf.Max(Mathf.Abs(pos.x), Mathf.Abs(pos.y));
+            int distance = Mathf.Abs(pos.x - startingPos.x) + Mathf.Abs(pos.y - startingPos.y);
 
-            if (value > maxIteration)
-                maxIteration = value;
+            if (distance > maxIteration)
+                maxIteration = distance;
         }
-        if(maxIteration <= 0)
+        if (maxIteration <= 0)
         {
-            Debug.Log("No neighbours to check.");
             yield break;
         }
+
+        Debug.Log("Checking 2 :" + maxIteration);
 
         int iterations = 1;
 
@@ -179,9 +182,12 @@ public class CardPlacementManager : MonoBehaviour
                 }
             }
 
+            iterations++;
             yield return new WaitForSeconds(timeBetweenWave);
         }
         while(iterations <= maxIteration);
+
+        Debug.Log("Neighbours checked");
 
         InventoryManager.Instance.AddNewCard();
     }
