@@ -25,8 +25,6 @@ public class AudioController : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         float volumeInDB = Mathf.Log10(volume) * 20;
-        Debug.Log("Volume in DB : " + volumeInDB);
-        Debug.Log("Volume : " + volume);
         if (volume <= 0.0001f)
         {
             audioMixer.SetFloat("MusicVolume", -80f);
@@ -42,8 +40,6 @@ public class AudioController : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         float volumeInDB = Mathf.Log10(volume) * 20;
-        Debug.Log("Volume in DB : " +  volumeInDB);
-        Debug.Log("Volume : " + volume);
         if (volume <= 0.0001f)
         {
             audioMixer.SetFloat("SFXVolume", -80f);
