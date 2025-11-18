@@ -34,7 +34,7 @@ public class Card : MonoBehaviour
         transform.DOMoveY(transform.position.y + yOffset, shakeDuration / 2).SetLoops(2, LoopType.Yoyo);
         transform.DOPunchRotation(Vector3.up * shakeAngle, shakeDuration, 20, 1);
         cardData = data;
-        iconGraphics.material.mainTexture = cardData.cardTextureIcon;
+        visualGraphics.material.mainTexture = cardData.cardTextureVisual;
     }
 
     public void SetNeighbours(Card[] neighbours)
