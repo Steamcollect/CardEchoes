@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlacementManager
   gridSize: 1
-  cardPrefab: {fileID: 230999482169439615, guid: 77e2b8a02c6110241956f55cd845c2bd, type: 3}
+  timeBetweenWave: 0.2
+  cardPrefab: {fileID: 1352476555276159746, guid: 44a163f3cfd28ee4aab4d8f0e8717a3b, type: 3}
   mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   placeCardHandle: {fileID: -978304505037387235, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

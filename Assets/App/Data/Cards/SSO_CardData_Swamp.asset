@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Swamp
   cardName: Swamp
   cardDescription: 
-  cardVisual: {fileID: 1307102781619078554, guid: d399e481cc80f3346b108e95fcfe5df5, type: 3}
+  cardVisualT: {fileID: 2800000, guid: d399e481cc80f3346b108e95fcfe5df5, type: 3}
+  cardVisualS: {fileID: 1307102781619078554, guid: d399e481cc80f3346b108e95fcfe5df5, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

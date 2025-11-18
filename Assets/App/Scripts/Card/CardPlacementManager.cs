@@ -59,10 +59,31 @@ public class CardPlacementManager : MonoBehaviour
         if (!currentCardHandle) return;
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
-        currentCardHandleGridPos = Vector2Int.RoundToInt(cam.ScreenToWorldPoint(mousePos)) * gridSize;
-        currentCardHandle.GetGraphics().sortingOrder = -currentCardHandleGridPos.y;
 
-        currentCardHandle.transform.position = (Vector2)currentCardHandleGridPos;
+        // Ray depuis la caméra
+        Ray ray = cam.ScreenPointToRay(mousePos);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan Y = 0
+
+        float enter;
+        if (groundPlane.Raycast(ray, out enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            // Convertir en grille (x, y mais ta grille est X/Z)
+            Vector2Int gridPos = new Vector2Int(
+                Mathf.RoundToInt(hitPoint.x / gridSize),
+                Mathf.RoundToInt(hitPoint.z / gridSize)
+            );
+
+            currentCardHandleGridPos = gridPos;
+
+            // Set position réelle dans le monde
+            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
+            currentCardHandle.transform.position = worldPos;
+
+            // Tri d’affichage si tu veux toujours l’ordre par profondeur
+            currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
+        }
     }
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
@@ -110,23 +131,64 @@ public class CardPlacementManager : MonoBehaviour
 
     public void SetCanPlaceCard(bool value) { canPlaceCard = value; }
 
-    IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
+    IEnumerator CheckCardsNeighbour(Vector2Int startingPoint)
     {
-        List<Card> cardsToCheck = new List<Card>(cards.Values);
+        // Ensemble des positions déjà visitées (pour ne jamais repasser deux fois sur une carte)
+        HashSet<Vector2Int> visited = new HashSet<Vector2Int>();
 
-        do
+        // Liste des cartes à traiter pour cette vague
+        List<Vector2Int> currentWave = new List<Vector2Int>();
+
+        // Ajout des cartes adjacentes au point initial
+        Vector2Int[] dirs = new Vector2Int[]
         {
-            List<Card> nextCardsToCheck = new List<Card>();
+        Vector2Int.up * gridSize,
+        Vector2Int.down * gridSize,
+        Vector2Int.left * gridSize,
+        Vector2Int.right * gridSize
+        };
 
-            foreach (Card card in cardsToCheck)
+        foreach (var dir in dirs)
+        {
+            Vector2Int pos = startingPoint + dir;
+            if (cards.ContainsKey(pos))
             {
+                currentWave.Add(pos);
+                visited.Add(pos);
+            }
+        }
+
+        // --- Début des vagues BFS ---
+        while (currentWave.Count > 0)
+        {
+            List<Vector2Int> nextWave = new List<Vector2Int>();
+
+            foreach (var pos in currentWave)
+            {
+                Card card = cards[pos];
+
+                // Étape 1 : appliquer effet
                 card.GetData().ApplyEffectToNeighbour(card);
+
+                // Étape 2 : ajouter toutes les cartes adjacentes non visitées
+                foreach (var dir in dirs)
+                {
+                    Vector2Int newPos = pos + dir;
+
+                    if (cards.ContainsKey(newPos) && !visited.Contains(newPos))
+                    {
+                        visited.Add(newPos);
+                        nextWave.Add(newPos);
+                    }
+                }
             }
 
-            cardsToCheck = new List<Card>(nextCardsToCheck);
+            // On passe à la vague suivante
+            currentWave = nextWave;
 
+            // Attente entre chaque vague
             yield return new WaitForSeconds(timeBetweenWave);
         }
-        while(cardsToCheck.Count > 0);
     }
+
 }
