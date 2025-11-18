@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -60,7 +60,7 @@ public class CardPlacementManager : MonoBehaviour
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
 
-        // Ray depuis la caméra
+        // Ray depuis la camÃ©ra
         Ray ray = cam.ScreenPointToRay(mousePos);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan Y = 0
 
@@ -77,11 +77,11 @@ public class CardPlacementManager : MonoBehaviour
 
             currentCardHandleGridPos = gridPos;
 
-            // Set position réelle dans le monde
+            // Set position rÃ©elle dans le monde
             Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
             currentCardHandle.transform.position = worldPos;
 
-            // Tri d’affichage si tu veux toujours l’ordre par profondeur
+            // Tri dâ€™affichage si tu veux toujours lâ€™ordre par profondeur
             currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
         }
     }
@@ -112,10 +112,28 @@ public class CardPlacementManager : MonoBehaviour
             cards.Add(currentCardHandleGridPos, currentCardHandle);
 
         List<Card> neighbours = new List<Card>();
-        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.up * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.up]);
-        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.down * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.down]);
-        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.left * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.left]);
-        if (cards.ContainsKey(currentCardHandleGridPos + Vector2Int.right * gridSize)) neighbours.Add(cards[currentCardHandleGridPos + Vector2Int.right]);
+
+        Vector2Int[] dirs = {
+            Vector2Int.up * gridSize,
+            Vector2Int.down * gridSize,
+            Vector2Int.left * gridSize,
+            Vector2Int.right * gridSize
+        };
+
+        foreach (var dir in dirs)
+        {
+            Vector2Int nPos = currentCardHandleGridPos + dir;
+            if (cards.ContainsKey(nPos))
+            {
+                Card neighbour = cards[nPos];
+                neighbours.Add(neighbour);
+
+                List<Card> nList = new List<Card>(neighbour.GetNeighbours() ?? new Card[0]);
+                nList.Add(currentCardHandle);
+                neighbour.SetNeighbours(nList.ToArray());
+            }
+        }
+
         currentCardHandle.SetNeighbours(neighbours.ToArray());
 
         Destroy(currentCardHandleUI.gameObject);
@@ -133,8 +151,6 @@ public class CardPlacementManager : MonoBehaviour
 
     IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
     {
-        Debug.Log("Checking neighbours...");
-
         int maxIteration = 0;
         foreach (var kvp in cards)
         {
@@ -147,10 +163,9 @@ public class CardPlacementManager : MonoBehaviour
         }
         if (maxIteration <= 0)
         {
+            InventoryManager.Instance.AddNewCard();
             yield break;
         }
-
-        Debug.Log("Checking 2 :" + maxIteration);
 
         int iterations = 1;
 
@@ -186,8 +201,6 @@ public class CardPlacementManager : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenWave);
         }
         while(iterations <= maxIteration);
-
-        Debug.Log("Neighbours checked");
 
         InventoryManager.Instance.AddNewCard();
     }
