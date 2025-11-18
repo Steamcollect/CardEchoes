@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using ToolBox.Dev;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static CardPlacementManager;
 
 public class CardPlacementManager : MonoBehaviour
 {
-    [Header("Settings")]
+    [Tab("Grid")]
     public int gridSize = 1;
     bool canPlaceCard = true;
     [SerializeField] float timeBetweenWave = .2f;
@@ -17,16 +17,48 @@ public class CardPlacementManager : MonoBehaviour
     [SerializeField] Vector2Int minMaxYCadPos;
     Vector2Int currentCardHandleGridPos;
 
-    [Header("References")]
+    [Space(10)]
     [SerializeField] Card cardPrefab;
     [SerializeField, Inline] StartCard[] defaultCardsData;
-
     [System.Serializable]
     public struct StartCard
     {
         public Vector2Int position;
         public SSO_CardData cardData;
     }
+
+    [Tab("Cursor")]
+    [SerializeField] float cursorRotationSpeed;
+    [SerializeField] float cursorMoveTime;
+    Vector3 cursorVelocity;
+
+    [Space(10)]
+    [SerializeField] Vector3 tilePosOffset;
+    [SerializeField] Vector3 tileRotationOffset;
+    [SerializeField] float currentCardHandleMoveTime;
+    Vector3 currentCardHandleVelocity;
+
+    [Space(10)]
+    [SerializeField] float cardHandleRotationAmount;
+    [SerializeField] float cardHandleRotationVelocityMult;
+    [SerializeField] float cardHandleRotationTime;
+
+    float rotationVelocity;
+    float rotationDelta;
+
+    [Space(10)]
+    [SerializeField] GameObject cursorGO;
+
+    [Tab("Card Anim")]
+    [SerializeField] float anim1Time;
+    [SerializeField] Vector3 anim1ShowCardRot;
+
+    [Space(10)]
+    [SerializeField] float anim2Time;
+    [SerializeField] Vector3 anim2CardPosOffset;
+    [SerializeField] Vector3 anim2CardRot;
+
+    [SerializeField] float anim3Time;
 
     Camera cam;
 
@@ -35,6 +67,7 @@ public class CardPlacementManager : MonoBehaviour
     CardControllerUI currentCardHandleUI;
     Card currentCardHandle;
 
+    [Tab("References")]
     [Header("Input")]
     [SerializeField] InputActionReference mousePosition;
     [SerializeField] InputActionReference placeCardHandle;
@@ -64,6 +97,8 @@ public class CardPlacementManager : MonoBehaviour
 
     private void Start()
     {
+        cursorGO.SetActive(false);
+
         foreach (StartCard startCard in defaultCardsData)
         {
             Card card = Instantiate(cardPrefab, transform);
@@ -121,7 +156,7 @@ public class CardPlacementManager : MonoBehaviour
 
         // Ray depuis la caméra
         Ray ray = cam.ScreenPointToRay(mousePos);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero); // Plan Y = 0
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
         float enter;
         if (groundPlane.Raycast(ray, out enter))
@@ -139,15 +174,36 @@ public class CardPlacementManager : MonoBehaviour
             currentCardHandleGridPos = gridPos;
 
             Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
-            currentCardHandle.transform.position = worldPos;
 
-            currentCardHandle.GetGraphics().sortingOrder = -gridPos.y;
+            currentCardHandle.transform.position = Vector3.SmoothDamp(
+                currentCardHandle.transform.position,
+                worldPos + tilePosOffset,
+                ref currentCardHandleVelocity,
+                currentCardHandleMoveTime);
+
+            float targetRot = -((currentCardHandleVelocity * Time.deltaTime) / Mathf.Min(.001f, cardHandleRotationVelocityMult * cardHandleRotationAmount)).x;
+            rotationDelta = Mathf.SmoothDamp(rotationDelta, targetRot, ref rotationVelocity, cardHandleRotationTime);
+
+            float angle = Mathf.Clamp(rotationDelta, -60, 60);
+            currentCardHandle.transform.localEulerAngles = 
+                new Vector3(tileRotationOffset.x, tileRotationOffset.y + angle, tileRotationOffset.z);
         }
+
+        // Cursor
+        cursorGO.transform.eulerAngles += Vector3.up * cursorRotationSpeed * Time.deltaTime;
+        cursorGO.transform.position = Vector3.SmoothDamp(
+            cursorGO.transform.position,
+            new Vector3(currentCardHandleGridPos.x * gridSize, .1f, currentCardHandleGridPos.y * gridSize),
+            ref cursorVelocity,
+            cursorMoveTime
+        );
     }
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
     {
         if (currentCardHandle) Destroy(currentCardHandle.gameObject);
+
+        cursorGO.SetActive(true);
 
         currentCardHandleUI = ui;
         currentCardHandle = Instantiate(cardPrefab, transform);
@@ -162,7 +218,9 @@ public class CardPlacementManager : MonoBehaviour
             return;
         }
 
-        if(cards.ContainsKey(currentCardHandleGridPos))
+        cursorGO.SetActive(false);
+
+        if (cards.ContainsKey(currentCardHandleGridPos))
         {
             Destroy(cards[currentCardHandleGridPos].gameObject);
             cards[currentCardHandleGridPos] = currentCardHandle;
@@ -195,11 +253,30 @@ public class CardPlacementManager : MonoBehaviour
 
         currentCardHandle.SetNeighbours(neighbours.ToArray());
 
-        Destroy(currentCardHandleUI.gameObject);
+        StartCoroutine(CardHandlePlacementAnim());
+    }
+    IEnumerator CardHandlePlacementAnim()
+    {
+        Transform cardHandle = currentCardHandle.transform;
         currentCardHandle = null;
+        Destroy(currentCardHandleUI.gameObject);
+
+        cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize) + tilePosOffset, anim1Time);
+        cardHandle.DORotate(anim1ShowCardRot, anim1Time).OnComplete(() =>
+        {
+            cardHandle.DOMove(cardHandle.position + anim2CardPosOffset, anim2Time);
+            cardHandle.DORotate(anim2CardRot, anim2Time).OnComplete(() =>
+            {
+                cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time);
+                cardHandle.DORotate(Vector3.zero, anim3Time);
+            });
+        });
+
+        yield return new WaitForSeconds(anim1Time + anim2Time + anim3Time);
 
         StartCoroutine(CheckCardsNeighbour(currentCardHandleGridPos));
     }
+
     void ClearCardHandle(InputAction.CallbackContext context)
     {
         if(currentCardHandle) 
