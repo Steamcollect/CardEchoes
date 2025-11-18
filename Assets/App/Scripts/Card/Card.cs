@@ -1,10 +1,11 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
     //[Header("Settings")]
     [Header("References")]
-    [SerializeField] SpriteRenderer graphics;
+    [SerializeField] MeshRenderer graphics;
     Card[] neighbours;
 
     SSO_CardData cardData;
@@ -15,13 +16,15 @@ public class Card : MonoBehaviour
     public void Setup(SSO_CardData data)
     {
         cardData = data;
-        graphics.sprite = cardData.cardVisual;
+
+        graphics.material = new Material(graphics.material);
+        graphics.material.mainTexture = cardData.cardVisualT;
     }
 
     public void ChangeData(SSO_CardData data)
     {
         cardData = data;
-        graphics.sprite = cardData.cardVisual;
+        graphics.material.mainTexture = cardData.cardVisualT;
     }
 
     public void SetNeighbours(Card[] neighbours)
@@ -34,7 +37,7 @@ public class Card : MonoBehaviour
         return cardData;
     }
 
-    public SpriteRenderer GetGraphics()
+    public MeshRenderer GetGraphics()
     {
         return graphics;
     }

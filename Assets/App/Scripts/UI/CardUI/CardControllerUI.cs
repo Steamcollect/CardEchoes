@@ -16,7 +16,7 @@ public class CardControllerUI : MonoBehaviour
     public void Setup(SSO_CardData data)
     {
         cardData = data;
-        image.sprite = data.cardVisual;
+        image.sprite = data.cardVisualS;
 
         trigger._OnPointerEnter += ShowTooltip;
         trigger._OnPointerExit += HidetoolTip;

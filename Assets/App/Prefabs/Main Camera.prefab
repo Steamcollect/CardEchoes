@@ -69,7 +69,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc446740212c7142a1fd8968ba4d25b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
-  dragInput: {fileID: -7066352153593757037, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  Origin: {x: 0, y: 0, z: 0}
-  Difference: {x: 0, y: 0, z: 0}
-  mainCamera: {fileID: 6334781978045581047}
-  isDragging: 0
+  minMaxX: {x: -10, y: 10}
+  minMaxY: {x: -10, y: 10}
+  moveSpeed: 80
+  smoothTime: 0.15
+  moveInput: {fileID: -968839699552669771, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

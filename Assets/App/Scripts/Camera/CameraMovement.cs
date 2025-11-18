@@ -1,58 +1,59 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class CameraMovement : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private Vector2 minMaxX = new Vector2(-10, 10);
+    [SerializeField] private Vector2 minMaxY = new Vector2(-10, 10);
+    [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float smoothTime = 0.15f;
 
     [Header("References")]
+    [SerializeField] private InputActionReference moveInput;
 
-    [SerializeField] private InputActionReference dragInput;
+    private Vector3 velocity = Vector3.zero;   // utilisé par SmoothDamp
 
-    [Header("Parameters")]
-
-    [SerializeField] private Vector3 Origin;
-    [SerializeField] private Vector3 Difference;
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private bool isDragging;
-
-    [Header("Camera Limits")]
-
-    [SerializeField] private float minX;
-    [SerializeField] private float maxX;
-    [SerializeField] private float minY;
-    [SerializeField] private float maxY;
-
-    private void OnEnable()
+    private void Update()
     {
-        dragInput.action.started += ctx => Origin = GetMousePosition;
-        dragInput.action.performed += ctx => isDragging = true;
-        dragInput.action.canceled += ctx => isDragging = false;
-    }
-    private void Awake()
-    {
-        mainCamera = Camera.main;
-    }
-    
-    private void LateUpdate()
-    {
-        if (!isDragging) return;
-        Difference = GetMousePosition - transform.position;
-        Vector3 targetPosition = Origin - Difference;
-
-        targetPosition.x = Mathf.Clamp (targetPosition.x = minX, maxX, 0);
-        targetPosition.y = Mathf.Clamp (targetPosition.y = minY, maxY, 0);
-
-        transform.position = targetPosition;
+        HandleMovement();
     }
 
-    private Vector3 GetMousePosition => mainCamera.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
+    private void HandleMovement()
+    {
+        Vector2 input = moveInput.action.ReadValue<Vector2>();
+
+        // Direction caméra (X = gauche/droite, Z = haut/bas)
+        Vector3 targetPosition = transform.position +
+            new Vector3(input.x, 0, input.y) * moveSpeed * Time.deltaTime;
+
+        // Clamp dans les limites
+        targetPosition.x = Mathf.Clamp(targetPosition.x, minMaxX.x, minMaxX.y);
+        targetPosition.z = Mathf.Clamp(targetPosition.z, minMaxY.x, minMaxY.y);
+
+        // Smooth movement
+        transform.position = Vector3.SmoothDamp(
+            transform.position,
+            targetPosition,
+            ref velocity,
+            smoothTime
+        );
+    }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(new Vector2(minX, maxY), new Vector2(maxX, maxY));
-        Gizmos.DrawLine(new Vector2(minX, minY), new Vector2(maxX, minY));
-        Gizmos.DrawLine(new Vector2(minX, minY), new Vector2(minX, maxY));
-        Gizmos.DrawLine(new Vector2(maxX, minY), new Vector2(maxX, maxY));
-        
+
+        // 4 coins du rectangle de limites
+        Vector3 bottomLeft = new Vector3(minMaxX.x, 0, minMaxY.x);
+        Vector3 bottomRight = new Vector3(minMaxX.y, 0, minMaxY.x);
+        Vector3 topLeft = new Vector3(minMaxX.x, 0, minMaxY.y);
+        Vector3 topRight = new Vector3(minMaxX.y, 0, minMaxY.y);
+
+        // tracer le rectangle
+        Gizmos.DrawLine(bottomLeft, bottomRight);
+        Gizmos.DrawLine(bottomRight, topRight);
+        Gizmos.DrawLine(topRight, topLeft);
+        Gizmos.DrawLine(topLeft, bottomLeft);
     }
 }

@@ -3,23 +3,42 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SSO_CardData_Water", menuName = "SSO/Cards/SSO_CardData_Water")]
 public class SSO_CardData_Water : SSO_CardData
 {
-    public override void ApplyEffectToNeighbour(Card neighbour)
+    public override void ApplyEffectToNeighbour(Card card)
     {
-        SSO_CardData data = neighbour.GetData();
+        Card[] neighbours = card.GetNeighbours();
 
-        if(data is SSO_CardData_Water) { return; }
-        else if (data is SSO_CardData_Minerals)
+        int currentPriority = 100;
+        SSO_CardData currentData = card.GetData();
+
+        for (int i = 0; i < neighbours.Length; i++)
         {
-            neighbour.ChangeData(cardsAvailable.Plant);
-        } else if (data is SSO_CardData_Plants)
-        {
-            neighbour.ChangeData(cardsAvailable.Tree);
-        } else if (data is SSO_CardData_Trees)
-        {
-            neighbour.ChangeData(cardsAvailable.Swamp);
-        } else if (data is SSO_CardData_Swamp)
-        {
-            neighbour.ChangeData(cardsAvailable.Water);
+            if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 1)
+            {
+                currentPriority = 1;
+                currentData = cardsAvailable.Swamp;
+            }
+            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 2)
+            {
+                currentPriority = 2;
+                currentData = cardsAvailable.Plant;
+            }
+            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
+            {
+                currentPriority = 3;
+                currentData = cardsAvailable.Tree;
+            }
+            else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 4)
+            {
+                currentPriority = 4;
+                currentData = cardsAvailable.Water;
+            }
+            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 5)
+            {
+                currentPriority = 5;
+                currentData = cardsAvailable.Water;
+            }
         }
+
+        card.ChangeData(currentData);
     }
 }

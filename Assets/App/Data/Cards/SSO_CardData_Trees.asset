@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Trees
   cardName: Trees
   cardDescription: 
-  cardVisual: {fileID: 6853316077166303748, guid: a4c6d5c36a3590449887e478d3fce04e, type: 3}
+  cardVisualT: {fileID: 2800000, guid: a4c6d5c36a3590449887e478d3fce04e, type: 3}
+  cardVisualS: {fileID: 6853316077166303748, guid: a4c6d5c36a3590449887e478d3fce04e, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

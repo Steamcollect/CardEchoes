@@ -14,6 +14,13 @@ public class InventoryManager : MonoBehaviour
     //[Header("Input")]
     //[Header("Output")]
 
+    public static InventoryManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         for (int i = 0; i < startingCardCount; i++)
