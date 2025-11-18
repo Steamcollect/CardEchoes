@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using ToolBox.Dev;
+using ToolBox.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -220,9 +221,10 @@ public class CardPlacementManager : MonoBehaviour
 
         cursorGO.SetActive(false);
 
+        GameObject objToDestroy = null;
         if (cards.ContainsKey(currentCardHandleGridPos))
         {
-            Destroy(cards[currentCardHandleGridPos].gameObject);
+            objToDestroy = cards[currentCardHandleGridPos].gameObject;
             cards[currentCardHandleGridPos] = currentCardHandle;
         }
         else
@@ -253,13 +255,12 @@ public class CardPlacementManager : MonoBehaviour
 
         currentCardHandle.SetNeighbours(neighbours.ToArray());
 
-        StartCoroutine(CardHandlePlacementAnim());
+        StartCoroutine(CardHandlePlacementAnim(objToDestroy));
     }
-    IEnumerator CardHandlePlacementAnim()
+    IEnumerator CardHandlePlacementAnim(GameObject objToDestroy)
     {
         Transform cardHandle = currentCardHandle.transform;
         currentCardHandle = null;
-        Destroy(currentCardHandleUI.gameObject);
 
         cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize) + tilePosOffset, anim1Time);
         cardHandle.DORotate(anim1ShowCardRot, anim1Time).OnComplete(() =>
@@ -273,6 +274,9 @@ public class CardPlacementManager : MonoBehaviour
         });
 
         yield return new WaitForSeconds(anim1Time + anim2Time + anim3Time);
+
+        Destroy(currentCardHandleUI.gameObject);
+        if(objToDestroy) Destroy(objToDestroy);
 
         StartCoroutine(CheckCardsNeighbour(currentCardHandleGridPos));
     }
