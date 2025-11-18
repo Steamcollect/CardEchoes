@@ -21,9 +21,8 @@ public class CameraMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        Vector2 input = moveInput.action.ReadValue<Vector2>();
+        Vector2 input = moveInput.action.ReadValue<Vector2>().normalized;
 
-        // Direction caméra (X = gauche/droite, Z = haut/bas)
         Vector3 targetPosition = transform.position +
             new Vector3(input.x, 0, input.y) * moveSpeed * Time.deltaTime;
 

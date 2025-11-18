@@ -105,6 +105,7 @@ public class CardPlacementManager : MonoBehaviour
         {
             Card card = Instantiate(cardPrefab, transform);
             card.Setup(startCard.cardData);
+            card.transform.rotation = Quaternion.Euler(anim2CardRot);
             card.transform.position = new Vector3(startCard.position.x * gridSize, 0, startCard.position.y * gridSize);
             cards.Add(startCard.position, card);
         }
