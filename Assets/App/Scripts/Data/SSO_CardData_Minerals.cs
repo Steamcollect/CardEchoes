@@ -15,27 +15,27 @@ public class SSO_CardData_Minerals : SSO_CardData
             if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 1)
             {
                 currentPriority = 1;
-                currentData = neighbours[i].GetData();
+                currentData = cardsAvailable.Plant;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 2)
             {
                 currentPriority = 2;
-                currentData = neighbours[i].GetData();
+                currentData = cardsAvailable.Swamp;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
             {
                 currentPriority = 3;
-                currentData = neighbours[i].GetData();
+                currentData = cardsAvailable.Water;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 4)
             {
                 currentPriority = 4;
-                currentData = neighbours[i].GetData();
+                currentData = cardsAvailable.Plant;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 5)
             {
                 currentPriority = 5;
-                currentData = neighbours[i].GetData();
+                currentData = cardsAvailable.Mineral;
             }
         }
 
