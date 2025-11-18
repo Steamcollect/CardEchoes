@@ -59,6 +59,7 @@ public class CardPlacementManager : MonoBehaviour
     [SerializeField] Vector3 anim2CardPosOffset;
     [SerializeField] Vector3 anim2CardRot;
 
+    [Space(10)]
     [SerializeField] float anim3Time;
 
     Camera cam;
@@ -143,7 +144,6 @@ public class CardPlacementManager : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         MoveCurrentCardHandle();
@@ -209,6 +209,34 @@ public class CardPlacementManager : MonoBehaviour
         currentCardHandleUI = ui;
         currentCardHandle = Instantiate(cardPrefab, transform);
         currentCardHandle.Setup(card);
+
+        Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
+
+        // Ray depuis la caméra
+        Ray ray = cam.ScreenPointToRay(mousePos);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+        float enter;
+        if (groundPlane.Raycast(ray, out enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            Vector2Int gridPos = new Vector2Int(
+                Mathf.RoundToInt(hitPoint.x / gridSize),
+                Mathf.RoundToInt(hitPoint.z / gridSize)
+            );
+
+            gridPos.x = Mathf.Clamp(gridPos.x, minMaxXCadPos.x, minMaxXCadPos.y);
+            gridPos.y = Mathf.Clamp(gridPos.y, minMaxYCadPos.x, minMaxYCadPos.y);
+
+            currentCardHandleGridPos = gridPos;
+
+            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
+            currentCardHandle.transform.position = worldPos + tilePosOffset;
+        }
+
+        cursorGO.transform.position =
+            new Vector3(currentCardHandleGridPos.x * gridSize, .1f, currentCardHandleGridPos.y * gridSize);
     }
 
     void PlaceCardHandle(InputAction.CallbackContext context)
@@ -269,7 +297,6 @@ public class CardPlacementManager : MonoBehaviour
             cardHandle.DORotate(anim2CardRot, anim2Time).OnComplete(() =>
             {
                 cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time);
-                cardHandle.DORotate(Vector3.zero, anim3Time);
             });
         });
 
@@ -283,8 +310,11 @@ public class CardPlacementManager : MonoBehaviour
 
     void ClearCardHandle(InputAction.CallbackContext context)
     {
-        if(currentCardHandle) 
+        if(currentCardHandle)
+        {
             Destroy(currentCardHandle.gameObject);
+            cursorGO.SetActive(false);
+        }
     }
 
     public void SetCanPlaceCard(bool value) { canPlaceCard = value; }

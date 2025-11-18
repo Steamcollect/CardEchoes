@@ -9,7 +9,8 @@ public class Card : MonoBehaviour
     [SerializeField] float yOffset;
 
     [Header("References")]
-    [SerializeField] MeshRenderer graphics;
+    [SerializeField] MeshRenderer iconGraphics;
+    [SerializeField] MeshRenderer visualGraphics;
     Card[] neighbours;
 
     SSO_CardData cardData;
@@ -21,8 +22,11 @@ public class Card : MonoBehaviour
     {
         cardData = data;
 
-        graphics.material = new Material(graphics.material);
-        graphics.material.mainTexture = cardData.cardVisualT;
+        iconGraphics.material = new Material(iconGraphics.material);
+        iconGraphics.material.mainTexture = cardData.cardTextureIcon;
+
+        visualGraphics.material = new Material(visualGraphics.material);
+        visualGraphics.material.mainTexture = cardData.cardTextureVisual;
     }
 
     public void ChangeData(SSO_CardData data)
@@ -30,7 +34,7 @@ public class Card : MonoBehaviour
         transform.DOMoveY(transform.position.y + yOffset, shakeDuration / 2).SetLoops(2, LoopType.Yoyo);
         transform.DOPunchRotation(Vector3.up * shakeAngle, shakeDuration, 20, 1);
         cardData = data;
-        graphics.material.mainTexture = cardData.cardVisualT;
+        iconGraphics.material.mainTexture = cardData.cardTextureIcon;
     }
 
     public void SetNeighbours(Card[] neighbours)
@@ -45,7 +49,7 @@ public class Card : MonoBehaviour
 
     public MeshRenderer GetGraphics()
     {
-        return graphics;
+        return iconGraphics;
     }
 
     public Card[] GetNeighbours()
