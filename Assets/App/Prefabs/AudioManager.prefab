@@ -64,8 +64,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioController
   audioMixer: {fileID: 24100000, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
-  musicSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
 --- !u!1 &7709151954039465052
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +105,7 @@ AudioSource:
   m_GameObject: {fileID: 7709151954039465052}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 1525371104355038370, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+  OutputAudioMixerGroup: {fileID: -6210033632628705078, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
