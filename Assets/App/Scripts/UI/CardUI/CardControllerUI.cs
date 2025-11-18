@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class CardControllerUI : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] SSO_CardData cardData;
-
+    //[Header("Settings")]
     [Header("References")]
     [SerializeField] Image image;
     [SerializeField] CardTriggerUI trigger;
+
+    SSO_CardData cardData;
 
     //[Header("Input")]
     //[Header("Output")]
@@ -21,6 +21,13 @@ public class CardControllerUI : MonoBehaviour
         trigger._OnPointerEnter += ShowTooltip;
         trigger._OnPointerExit += HidetoolTip;
         trigger._OnPointerClick += OnClick;
+    }
+
+    public void UpdateVisual(float angle, float yOffset)
+    {
+        image.transform.rotation = Quaternion.Euler(0, 0, angle);
+        image.rectTransform.offsetMin = new Vector2(image.rectTransform.offsetMin.x, yOffset);
+        image.rectTransform.offsetMax = new Vector2(image.rectTransform.offsetMin.x, yOffset);
     }
 
     void ShowTooltip()

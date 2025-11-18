@@ -10,7 +10,6 @@ public class CardPlacementManager : MonoBehaviour
 {
     [Tab("Grid")]
     public int gridSize = 1;
-    bool canPlaceCard = true;
     [SerializeField] float timeBetweenWave = .2f;
 
     [Space(10)]
@@ -242,9 +241,8 @@ public class CardPlacementManager : MonoBehaviour
 
     void PlaceCardHandle(InputAction.CallbackContext context)
     {
-        if (!currentCardHandle || !canPlaceCard)
+        if (!currentCardHandle)
         {
-            canPlaceCard = true;
             return;
         }
 
@@ -317,8 +315,6 @@ public class CardPlacementManager : MonoBehaviour
             cursorGO.SetActive(false);
         }
     }
-
-    public void SetCanPlaceCard(bool value) { canPlaceCard = value; }
 
     IEnumerator CheckCardsNeighbour(Vector2Int startingPos)
     {

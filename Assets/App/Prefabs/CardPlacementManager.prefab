@@ -71,7 +71,7 @@ MonoBehaviour:
     cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
   cursorRotationSpeed: 90
   cursorMoveTime: 0.07
-  tilePosOffset: {x: 0, y: 0.4, z: 0.8}
+  tilePosOffset: {x: 0, y: 0.6, z: 0.8}
   tileRotationOffset: {x: 50, y: 180, z: 0}
   currentCardHandleMoveTime: 0.13
   cardHandleRotationAmount: 10
@@ -104,7 +104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &124938452583357313
 Transform:
   m_ObjectHideFlags: 0

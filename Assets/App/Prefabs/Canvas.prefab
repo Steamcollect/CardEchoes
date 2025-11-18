@@ -651,7 +651,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: -20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1262,6 +1262,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a5fccc8272d62459574d485c756a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  maxCardAngle: 12
+  maxCardYOffset: 30
+  angleModifierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -3.8319325
+      outSlope: -3.8319325
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.081871346
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 4.0818496
+      outSlope: 4.0818496
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.05380106
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  posModifierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.583045
+      outSlope: 3.583045
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.079532176
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.2556596
+      outSlope: -4.2556596
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.060818672
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   startingCardCount: 5
   cardsDataAvailable:
   - {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
@@ -2211,9 +2279,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 802258761094298554}
     m_Modifications:
+    - target: {fileID: 456885195724836710, guid: 47e340450b788074e849d3595b46728a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493853656170660555, guid: 47e340450b788074e849d3595b46728a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7989033038282458317, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_Name
       value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8717688902026130004, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_Pivot.x
