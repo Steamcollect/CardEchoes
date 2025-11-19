@@ -112,38 +112,57 @@ public class CardPlacementManager : MonoBehaviour
             cards.Add(startCard.position, card);
         }
 
-        // Setup neighbours
         foreach (var kvp in cards)
         {
             Vector2Int pos = kvp.Key;
             Card card = kvp.Value;
 
-            List<Card> neighbours = new List<Card>();
+            Card[] neighbours = new Card[4];
 
+            // directions indexées
             Vector2Int[] dirs = {
-            Vector2Int.up * gridSize,
-            Vector2Int.down * gridSize,
-            Vector2Int.left * gridSize,
-            Vector2Int.right * gridSize
-        };
+        new Vector2Int(-gridSize, 0), // 0 = gauche
+        new Vector2Int(0, gridSize),  // 1 = haut
+        new Vector2Int(gridSize, 0),  // 2 = droite
+        new Vector2Int(0, -gridSize)  // 3 = bas
+    };
 
-            foreach (var dir in dirs)
+            // assignation des voisins s'ils existent
+            for (int i = 0; i < 4; i++)
             {
-                Vector2Int nPos = pos + dir;
-                if (cards.ContainsKey(nPos))
-                {
-                    Card neighbour = cards[nPos];
-                    neighbours.Add(neighbour);
+                Vector2Int nPos = pos + dirs[i];
 
-                    // Ajouter la carte courante comme voisin de son voisin
-                    List<Card> nList = new List<Card>(neighbour.GetNeighbours() ?? new Card[0]);
-                    if (!nList.Contains(card))
-                        nList.Add(card);
-                    neighbour.SetNeighbours(nList.ToArray());
+                if (cards.TryGetValue(nPos, out Card neighbour))
+                {
+                    neighbours[i] = neighbour;
                 }
             }
 
-            card.SetNeighbours(neighbours.ToArray());
+            card.SetNeighbours(neighbours);
+        }
+
+        // Mise à jour des voisins inverses (2e passe nécessaire)
+        foreach (var kvp in cards)
+        {
+            Vector2Int pos = kvp.Key;
+            Card card = kvp.Value;
+
+            Card[] neighbours = card.GetNeighbours();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Card neighbour = neighbours[i];
+                if (neighbour == null) continue;
+
+                Card[] neighNeighbours = neighbour.GetNeighbours();
+                if (neighNeighbours == null)
+                    neighNeighbours = new Card[4];
+
+                int opposite = (i + 2) % 4; // 0↔2 gauche<->droite, 1↔3 haut<->bas
+
+                neighNeighbours[opposite] = card;
+                neighbour.SetNeighbours(neighNeighbours);
+            }
         }
     }
 
@@ -264,31 +283,37 @@ public class CardPlacementManager : MonoBehaviour
         else
             cards.Add(currentCardHandleGridPos, currentCardHandle);
 
-        List<Card> neighbours = new List<Card>();
+        Card[] neighbours = new Card[4];
 
         Vector2Int[] dirs = {
-            Vector2Int.up * gridSize,
-            Vector2Int.down * gridSize,
-            Vector2Int.left * gridSize,
-            Vector2Int.right * gridSize
+            new Vector2Int(-gridSize, 0),
+            new Vector2Int(0, gridSize),
+            new Vector2Int(gridSize, 0),
+            new Vector2Int(0, -gridSize)
         };
 
-        foreach (var dir in dirs)
+        for (int i = 0; i < 4; i++)
         {
-            Vector2Int nPos = currentCardHandleGridPos + dir;
+            Vector2Int nPos = currentCardHandleGridPos + dirs[i];
             if (cards.ContainsKey(nPos))
-            {
-                Card neighbour = cards[nPos];
-                neighbours.Add(neighbour);
-
-                List<Card> nList = new List<Card>(neighbour.GetNeighbours() ?? new Card[0]);
-                nList.Add(currentCardHandle);
-                neighbour.SetNeighbours(nList.ToArray());
-            }
+                neighbours[i] = cards[nPos];
         }
 
-        currentCardHandle.SetNeighbours(neighbours.ToArray());
+        currentCardHandle.SetNeighbours(neighbours);
 
+        // mise à jour des voisins
+        for (int i = 0; i < 4; i++)
+        {
+            Card neighbour = neighbours[i];
+            if (neighbour == null) continue;
+
+            Card[] nNeigh = neighbour.GetNeighbours();
+            int opposite = (i + 2) % 4;
+            nNeigh[opposite] = currentCardHandle;
+            neighbour.SetNeighbours(nNeigh);
+        }
+
+        currentCardHandle.SetNeighbours(neighbours);
         StartCoroutine(CardHandlePlacementAnim(objToDestroy));
     }
     IEnumerator CardHandlePlacementAnim(GameObject objToDestroy)

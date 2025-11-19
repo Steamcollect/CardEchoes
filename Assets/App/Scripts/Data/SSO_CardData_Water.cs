@@ -13,6 +13,12 @@ public class SSO_CardData_Water : SSO_CardData
 
         for (int i = 0; i < neighbours.Length; i++)
         {
+            if (neighbours[i] == null)
+                continue;
+
+            if (neighbours[i] == null)
+                continue;
+
             if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 1)
             {
                 currentPriority = 1;

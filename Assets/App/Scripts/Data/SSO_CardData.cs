@@ -23,31 +23,23 @@ public class SSO_CardData : ScriptableObject
         newCard.transform.position = lastCard.transform.position;
         newCard.transform.rotation = lastCard.transform.rotation;
 
-        // Récupérer les voisins de l'ancienne carte
         Card[] neighbours = lastCard.GetNeighbours();
         if (neighbours == null)
-            neighbours = new Card[0];
+            neighbours = new Card[4];
 
-        // Donner les mêmes voisins à la nouvelle carte
         newCard.SetNeighbours(neighbours);
 
-        // Mettre à jour les voisins pour qu'ils pointent vers la nouvelle carte au lieu de l'ancienne
-        foreach (Card n in neighbours)
+        // mettre à jour les voisins
+        for (int i = 0; i < 4; i++)
         {
+            Card n = neighbours[i];
             if (n == null) continue;
 
-            Card[] nNeighbours = n.GetNeighbours();
-            if (nNeighbours == null) continue;
+            Card[] nNeigh = n.GetNeighbours();
+            int opposite = (i + 2) % 4;
 
-            for (int i = 0; i < nNeighbours.Length; i++)
-            {
-                if (nNeighbours[i] == lastCard)
-                {
-                    nNeighbours[i] = newCard;
-                }
-            }
-
-            n.SetNeighbours(nNeighbours);
+            nNeigh[opposite] = newCard;
+            n.SetNeighbours(nNeigh);
         }
 
         // Mettre à jour le dictionnaire dans le CardPlacementManager

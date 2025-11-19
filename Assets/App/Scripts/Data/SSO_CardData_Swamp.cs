@@ -12,6 +12,9 @@ public class SSO_CardData_Swamp : SSO_CardData
 
         for (int i = 0; i < neighbours.Length; i++)
         {
+            if (neighbours[i] == null)
+                continue;
+
             if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 1)
             {
                 currentPriority = 1;
