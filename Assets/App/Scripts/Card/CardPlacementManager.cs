@@ -28,6 +28,10 @@ public class CardPlacementManager : MonoBehaviour
         public SSO_CardData cardData;
     }
 
+    [Space(10)]
+    [SerializeField] LayerMask defaultLayerMask;
+    [SerializeField] LayerMask uxLayerMask;
+
     [Tab("Cursor")]
     [SerializeField] float cursorRotationSpeed;
     [SerializeField] float cursorMoveTime;
@@ -70,6 +74,7 @@ public class CardPlacementManager : MonoBehaviour
     Card currentCardHandle;
     [Tab("Audio")]
     [SerializeField] Sound tileSwapSound;
+
     [Tab("References")]
     [Header("Input")]
     [SerializeField] InputActionReference mousePosition;
@@ -289,7 +294,6 @@ public class CardPlacementManager : MonoBehaviour
             && pos.y >= minMaxYCadPos.x && pos.y <= minMaxYCadPos.y;
     }
 
-
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
     {
         if (currentCardHandle) Destroy(currentCardHandle.gameObject);
@@ -301,6 +305,8 @@ public class CardPlacementManager : MonoBehaviour
         currentCardHandle.Setup(card);
         currentCardHandle.SetActiveVerso(true);
         currentCardHandle.SetActiveRecto(false);
+
+        currentCardHandle.SetLayer(uxLayerMask);
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
 
@@ -394,6 +400,7 @@ public class CardPlacementManager : MonoBehaviour
             cardHandle.DOMove(cardHandle.position + anim2CardPosOffset, anim2Time);
             cardHandle.DORotate(anim2CardRot, anim2Time).OnComplete(() =>
             {
+                cCard.SetLayer(defaultLayerMask);
                 cCard.SetActiveVerso(false);
                 cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time);
             });
