@@ -246,6 +246,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 234731243}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &160347282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7056171885464989650, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+  m_PrefabInstance: {fileID: 1373476604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &234731242
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +723,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 909374706}
     m_Modifications:
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: tileSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: musicMixerGroup
+      value: 
+      objectReference: {fileID: -6210033632628705078, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: soundMixerGroup
+      value: 
+      objectReference: {fileID: 1525371104355038370, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: tileSound.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: transitionFadeInDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: transitionFadeOutDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: 'tileSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a07a6091a116d14dae549751e7a381d, type: 3}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: 'tileSound.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d06c5280bcf0194dbe38217455f1663, type: 3}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: 'tileSound.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9487c6f5402ef684f93ff68b8ec088af, type: 3}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: 'tileSound.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 04897520e9e523249823351e5ff29116, type: 3}
+    - target: {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: startingAudioObjectsCount
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 6262156825369226525, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.87383
@@ -762,10 +811,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5401286103083572260, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7056171885464989650, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1949779716}
   m_SourcePrefab: {fileID: 100100000, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
 --- !u!4 &1440311621 stripped
 Transform:
@@ -834,6 +887,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6262156825369226525, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
   m_PrefabInstance: {fileID: 1373476604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1949779716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160347282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c31a0dac6989334689757409f036fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  startingAudioObjectsCount: 40
+  transitionFadeOutDelay: 0.5
+  transitionFadeInDelay: 0.5
+  playlist:
+  - clip: {fileID: 8300000, guid: a5daf55e4175e2d40a73cdf886337fb4, type: 3}
+    volumMultiplier: 1
+    isLooping: 1
+  musicMixerGroup: {fileID: -6210033632628705078, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+  soundMixerGroup: {fileID: 1525371104355038370, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
 --- !u!1 &2058086604
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1072,142 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: timeBetweenWave
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: tileSwapSoundList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: tileSwapSound.clips.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: tileSwapSound.volumeMultiplier
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e5da8f4b535820145831069f6f360e91, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 55ce3afa21ea77f44a3337e837c32cb1, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cc02a892c87072d49bc533576d26003f, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a2f04ca0612ecaa4392532c8f08b5f31, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: db9e898c5f987f945a91934e1110993f, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 31aece18e332e004a98bbf14894baebe, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bb93396a971d4c54f861209bafe679ad, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8a3955a6c6281c14bba660d52eff93dc, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f376cbd93dab3a543862ff186df5a660, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[9]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 01d5082217534b848a922978bb13868d, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[10]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2edd140f6c32ebb41a2fbde3d5af0319, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[11]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 94e62e7641c02d7499a42e2116cb1450, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[12]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ebeb6136ff9d074b85a58fa4d72a071, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[13]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4007430d8e5520c4088b975841a4cdca, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[14]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff3b5a134cc6d84f9f94c08e5a987ca, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[15]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ca04faa761fa68b4c8540b9cbc566ad0, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[16]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 65a78ef217597b24cbfada46a3ba2232, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSound.clips.Array.data[17]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1871d975b041f3b448c17c98107f0d3c, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: tileSwapSoundList.Array.data[0].clips.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: tileSwapSoundList.Array.data[0].volumeMultiplier
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 77126ef8f9fbaea4aa50b3fcebd41dde, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9996a125e4aeeed4e901f5344941f6c6, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a9b31c88923e42041a01b1a51f5f1f50, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e36f894e09e19294080bc77cf94dfbac, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2328f564c73794b4b97deca0932a43fa, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9757c18e9d178b54396a499dbd732df3, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d989d8229d9c36e4a993398ca4dba4f1, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e55baf87ab85cc40816ac10454cdd21, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ee6ca93090015694bbc27cb100e40eaf, type: 3}
+    - target: {fileID: 1938631625737085054, guid: b69377beb6242e44bb5ad7d2665b3968, type: 3}
+      propertyPath: 'tileSwapSoundList.Array.data[0].clips.Array.data[9]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e0ed695abfcf4d44a9c5cf0552290d56, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

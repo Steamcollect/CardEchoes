@@ -68,7 +68,8 @@ public class CardPlacementManager : MonoBehaviour
 
     CardControllerUI currentCardHandleUI;
     Card currentCardHandle;
-
+    [Tab("Audio")]
+    [SerializeField] Sound tileSwapSound;
     [Tab("References")]
     [Header("Input")]
     [SerializeField] InputActionReference mousePosition;
@@ -401,6 +402,7 @@ public class CardPlacementManager : MonoBehaviour
                 }
             }
 
+            AudioManager.Instance.PlayClipAt(tileSwapSound, Vector3.zero);
             iterations++;
             yield return new WaitForSeconds(timeBetweenWave);
         }

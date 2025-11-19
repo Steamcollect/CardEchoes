@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlacementManager
   gridSize: 1
-  timeBetweenWave: 0.05
+  timeBetweenWave: 0.15
+  canPlaceCard: 1
   minMaxXCadPos: {x: -7, y: 7}
   minMaxYCadPos: {x: -7, y: 0}
-  cardPrefab: {fileID: 1352476555276159746, guid: 44a163f3cfd28ee4aab4d8f0e8717a3b, type: 3}
   defaultCardsData:
   - position: {x: 0, y: -3}
     cardData: {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
@@ -84,6 +84,28 @@ MonoBehaviour:
   anim2CardPosOffset: {x: 0, y: 1.2, z: 0}
   anim2CardRot: {x: 180, y: 0, z: 0}
   anim3Time: 0.06
+  tileSwapSound:
+    volumeMultiplier: 0.6
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: e5da8f4b535820145831069f6f360e91, type: 3}
+    - {fileID: 8300000, guid: 55ce3afa21ea77f44a3337e837c32cb1, type: 3}
+    - {fileID: 8300000, guid: cc02a892c87072d49bc533576d26003f, type: 3}
+    - {fileID: 8300000, guid: a2f04ca0612ecaa4392532c8f08b5f31, type: 3}
+    - {fileID: 8300000, guid: db9e898c5f987f945a91934e1110993f, type: 3}
+    - {fileID: 8300000, guid: 31aece18e332e004a98bbf14894baebe, type: 3}
+    - {fileID: 8300000, guid: bb93396a971d4c54f861209bafe679ad, type: 3}
+    - {fileID: 8300000, guid: 8a3955a6c6281c14bba660d52eff93dc, type: 3}
+    - {fileID: 8300000, guid: f376cbd93dab3a543862ff186df5a660, type: 3}
+    - {fileID: 8300000, guid: 01d5082217534b848a922978bb13868d, type: 3}
+    - {fileID: 8300000, guid: 2edd140f6c32ebb41a2fbde3d5af0319, type: 3}
+    - {fileID: 8300000, guid: 94e62e7641c02d7499a42e2116cb1450, type: 3}
+    - {fileID: 8300000, guid: 6ebeb6136ff9d074b85a58fa4d72a071, type: 3}
+    - {fileID: 8300000, guid: 4007430d8e5520c4088b975841a4cdca, type: 3}
+    - {fileID: 8300000, guid: 8ff3b5a134cc6d84f9f94c08e5a987ca, type: 3}
+    - {fileID: 8300000, guid: ca04faa761fa68b4c8540b9cbc566ad0, type: 3}
+    - {fileID: 8300000, guid: 65a78ef217597b24cbfada46a3ba2232, type: 3}
+    - {fileID: 8300000, guid: 1871d975b041f3b448c17c98107f0d3c, type: 3}
   mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   placeCardHandle: {fileID: -978304505037387235, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

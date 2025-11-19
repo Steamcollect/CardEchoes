@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6262156825369226525}
-  - component: {fileID: 5401286103083572260}
   - component: {fileID: 1959928162274166137}
+  - component: {fileID: 7985881127127090968}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -35,22 +35,6 @@ Transform:
   - {fileID: 8004019418178813157}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5401286103083572260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7056171885464989650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f8c045584b0cc4780fcbe8e9cacf75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
-  musicSource: {fileID: 7570814094756205364}
-  sfxSource: {fileID: 2120515576878519344}
-  musicClipA: {fileID: 8300000, guid: 24d2b6f016b509d4399231a2f9e1a96d, type: 3}
-  musicClipB: {fileID: 8300000, guid: a5daf55e4175e2d40a73cdf886337fb4, type: 3}
 --- !u!114 &1959928162274166137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,6 +48,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioController
   audioMixer: {fileID: 24100000, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+--- !u!114 &7985881127127090968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056171885464989650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c31a0dac6989334689757409f036fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  startingAudioObjectsCount: 40
+  transitionFadeOutDelay: 0.5
+  transitionFadeInDelay: 0.5
+  playlist:
+  - clip: {fileID: 8300000, guid: a5daf55e4175e2d40a73cdf886337fb4, type: 3}
+    volumMultiplier: 1
+    isLooping: 1
+  musicMixerGroup: {fileID: -6210033632628705078, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
+  soundMixerGroup: {fileID: 1525371104355038370, guid: a01e01eb3c77dcb41ba9a7356d82ab96, type: 2}
 --- !u!1 &7709151954039465052
 GameObject:
   m_ObjectHideFlags: 0
