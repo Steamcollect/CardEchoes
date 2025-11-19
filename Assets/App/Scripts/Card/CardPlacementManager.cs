@@ -192,12 +192,9 @@ public class CardPlacementManager : MonoBehaviour
                 Mathf.RoundToInt(hitPoint.z / gridSize)
             );
 
-            gridPos.x = Mathf.Clamp(gridPos.x, minMaxXCadPos.x, minMaxXCadPos.y);
-            gridPos.y = Mathf.Clamp(gridPos.y, minMaxYCadPos.x, minMaxYCadPos.y);
+            currentCardHandleGridPos = GetCorrectPosition(gridPos);
 
-            currentCardHandleGridPos = gridPos;
-
-            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
+            Vector3 worldPos = new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize);
 
             currentCardHandle.transform.position = Vector3.SmoothDamp(
                 currentCardHandle.transform.position,
@@ -222,6 +219,76 @@ public class CardPlacementManager : MonoBehaviour
             cursorMoveTime
         );
     }
+
+    public Vector2Int GetCorrectPosition(Vector2Int targetPosition)
+    {
+        // 1. Clamp dans les limites
+        Vector2Int clamped = new Vector2Int(
+            Mathf.Clamp(targetPosition.x, minMaxXCadPos.x, minMaxXCadPos.y),
+            Mathf.Clamp(targetPosition.y, minMaxYCadPos.x, minMaxYCadPos.y)
+        );
+
+        // 2. Construire l'ensemble des positions autorisées :
+        //    - toutes les positions qui contiennent une carte
+        //    - toutes les cases adjacentes (haut / bas / gauche / droite) à ces cartes
+        HashSet<Vector2Int> allowedPositions = new HashSet<Vector2Int>();
+
+        Vector2Int[] dirs =
+        {
+        new Vector2Int(-gridSize, 0),  // gauche
+        new Vector2Int(gridSize, 0),   // droite
+        new Vector2Int(0, gridSize),   // haut
+        new Vector2Int(0, -gridSize)   // bas
+    };
+
+        foreach (var kvp in cards)
+        {
+            Vector2Int pos = kvp.Key;
+
+            // La case de la carte elle-même est autorisée
+            if (IsInsideBounds(pos))
+                allowedPositions.Add(pos);
+
+            // Et ses 4 voisins non diagonaux aussi
+            foreach (var d in dirs)
+            {
+                Vector2Int nPos = pos + d;
+                if (IsInsideBounds(nPos))
+                    allowedPositions.Add(nPos);
+            }
+        }
+
+        // Si bizarrement aucune position n'est autorisée (aucune carte), fallback : clamp simple
+        if (allowedPositions.Count == 0)
+            return clamped;
+
+        // 3. Si la position clamped est dans la zone autorisée → on la garde
+        if (allowedPositions.Contains(clamped))
+            return clamped;
+
+        // 4. Sinon, on cherche la position autorisée la plus proche (distance de Manhattan)
+        Vector2Int bestPos = clamped;
+        int bestDist = int.MaxValue;
+
+        foreach (var pos in allowedPositions)
+        {
+            int dist = Mathf.Abs(pos.x - clamped.x) + Mathf.Abs(pos.y - clamped.y);
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                bestPos = pos;
+            }
+        }
+
+        return bestPos;
+    }
+
+    private bool IsInsideBounds(Vector2Int pos)
+    {
+        return pos.x >= minMaxXCadPos.x && pos.x <= minMaxXCadPos.y
+            && pos.y >= minMaxYCadPos.x && pos.y <= minMaxYCadPos.y;
+    }
+
 
     public void HandleNewCard(SSO_CardData card, CardControllerUI ui)
     {
@@ -251,12 +318,9 @@ public class CardPlacementManager : MonoBehaviour
                 Mathf.RoundToInt(hitPoint.z / gridSize)
             );
 
-            gridPos.x = Mathf.Clamp(gridPos.x, minMaxXCadPos.x, minMaxXCadPos.y);
-            gridPos.y = Mathf.Clamp(gridPos.y, minMaxYCadPos.x, minMaxYCadPos.y);
+            currentCardHandleGridPos = GetCorrectPosition(gridPos);
 
-            currentCardHandleGridPos = gridPos;
-
-            Vector3 worldPos = new Vector3(gridPos.x * gridSize, 0, gridPos.y * gridSize);
+            Vector3 worldPos = new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize);
             currentCardHandle.transform.position = worldPos + tilePosOffset;
         }
 
@@ -377,6 +441,7 @@ public class CardPlacementManager : MonoBehaviour
         Card card;
         do
         {
+            int cardFoundCount = 0;
             for (int dx = -iterations; dx <= iterations; dx++)
             {
                 int dy = iterations - Mathf.Abs(dx);
@@ -386,6 +451,7 @@ public class CardPlacementManager : MonoBehaviour
                 
                 if (cards.ContainsKey(pos1))
                 {
+                    cardFoundCount++;
                     card = cards[pos1];
                     card.GetData().ApplyEffectToNeighbour(card, transform);
                 }
@@ -396,11 +462,14 @@ public class CardPlacementManager : MonoBehaviour
 
                     if (cards.ContainsKey(pos2))
                     {
+                        cardFoundCount++;
                         card = cards[pos2];
                         card.GetData().ApplyEffectToNeighbour(card, transform);
                     }
                 }
             }
+
+            if (cardFoundCount <= 0) break;
 
             AudioManager.Instance.PlayClipAt(tileSwapSound, Vector3.zero);
             iterations++;

@@ -152,11 +152,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
   minMaxX: {x: -5, y: 5}
   minMaxY: {x: -10, y: -4}
-  moveSpeed: 60
+  moveSpeed: 95
   smoothTime: 0.15
   shakeAngle: 2
   shakeDuration: 0.15
   zoomInput: {fileID: 8172552489930227883, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  zoomSpeed: 1
-  maxZoomDistance: 4
+  zoomSpeed: 0.7
+  minMaxZoomDistance: {x: -5, y: 2}
   moveInput: {fileID: -968839699552669771, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
