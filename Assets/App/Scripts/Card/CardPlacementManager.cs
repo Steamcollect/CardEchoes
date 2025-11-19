@@ -107,6 +107,8 @@ public class CardPlacementManager : MonoBehaviour
             card.Setup(startCard.cardData);
             card.transform.rotation = Quaternion.Euler(anim2CardRot);
             card.transform.position = new Vector3(startCard.position.x * gridSize, 0, startCard.position.y * gridSize);
+            card.SetActiveRecto(true);
+            card.SetActiveVerso(false);
             cards.Add(startCard.position, card);
         }
 
@@ -210,6 +212,8 @@ public class CardPlacementManager : MonoBehaviour
         currentCardHandleUI = ui;
         currentCardHandle = Instantiate(card.cardPrefabs.GetRandom(), transform);
         currentCardHandle.Setup(card);
+        currentCardHandle.SetActiveVerso(true);
+        currentCardHandle.SetActiveRecto(false);
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
 
@@ -290,14 +294,17 @@ public class CardPlacementManager : MonoBehaviour
     IEnumerator CardHandlePlacementAnim(GameObject objToDestroy)
     {
         Transform cardHandle = currentCardHandle.transform;
+        Card cCard = currentCardHandle;
         currentCardHandle = null;
 
+        cCard.SetActiveRecto(true);
         cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize) + tilePosOffset, anim1Time);
         cardHandle.DORotate(anim1ShowCardRot, anim1Time).OnComplete(() =>
         {
             cardHandle.DOMove(cardHandle.position + anim2CardPosOffset, anim2Time);
             cardHandle.DORotate(anim2CardRot, anim2Time).OnComplete(() =>
             {
+                cCard.SetActiveVerso(false);
                 cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time);
             });
         });
