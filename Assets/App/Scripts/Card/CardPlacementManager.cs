@@ -301,6 +301,8 @@ public class CardPlacementManager : MonoBehaviour
 
         yield return new WaitForSeconds(anim1Time + anim2Time + anim3Time);
 
+        CameraController.Instance.Shake();
+
         Destroy(currentCardHandleUI.gameObject);
         if(objToDestroy) Destroy(objToDestroy);
 

@@ -1,7 +1,8 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraMovement : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private Vector2 minMaxX = new Vector2(-10, 10);
@@ -9,10 +10,21 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float smoothTime = 0.15f;
 
+    [Space(10)]
+    [SerializeField] float shakeAngle = 15;
+    [SerializeField] float shakeDuration = 0.2f;
+
     [Header("References")]
     [SerializeField] private InputActionReference moveInput;
 
     private Vector3 velocity = Vector3.zero;
+
+    public static CameraController Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -54,5 +66,10 @@ public class CameraMovement : MonoBehaviour
         Gizmos.DrawLine(bottomRight, topRight);
         Gizmos.DrawLine(topRight, topLeft);
         Gizmos.DrawLine(topLeft, bottomLeft);
+    }
+
+    public void Shake()
+    {
+        transform.DOPunchRotation(transform.forward * shakeAngle, shakeDuration, 20, 1);
     }
 }
