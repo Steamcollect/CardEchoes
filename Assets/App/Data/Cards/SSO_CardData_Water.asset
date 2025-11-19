@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Water
   cardName: Water
   cardDescription: 
+  cardPrefabs:
+  - {fileID: -2541076368519110353, guid: 008f2d2e580a0354cbc280bf89387844, type: 3}
   cardUIIcon: {fileID: 6049605792901559095, guid: 3bdf16e682333be4b982fb0720351e39, type: 3}
-  cardTextureIcon: {fileID: 2800000, guid: 3bdf16e682333be4b982fb0720351e39, type: 3}
-  cardTextureVisual: {fileID: 2800000, guid: 3bdf16e682333be4b982fb0720351e39, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

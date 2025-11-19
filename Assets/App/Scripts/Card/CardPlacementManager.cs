@@ -20,7 +20,6 @@ public class CardPlacementManager : MonoBehaviour
     Vector2Int currentCardHandleGridPos;
 
     [Space(10)]
-    [SerializeField] Card cardPrefab;
     [SerializeField, Inline] StartCard[] defaultCardsData;
     [System.Serializable]
     public struct StartCard
@@ -104,7 +103,7 @@ public class CardPlacementManager : MonoBehaviour
 
         foreach (StartCard startCard in defaultCardsData)
         {
-            Card card = Instantiate(cardPrefab, transform);
+            Card card = Instantiate(startCard.cardData.cardPrefabs.GetRandom(), transform);
             card.Setup(startCard.cardData);
             card.transform.rotation = Quaternion.Euler(anim2CardRot);
             card.transform.position = new Vector3(startCard.position.x * gridSize, 0, startCard.position.y * gridSize);
@@ -196,7 +195,7 @@ public class CardPlacementManager : MonoBehaviour
         cursorGO.transform.eulerAngles += Vector3.up * cursorRotationSpeed * Time.deltaTime;
         cursorGO.transform.position = Vector3.SmoothDamp(
             cursorGO.transform.position,
-            new Vector3(currentCardHandleGridPos.x * gridSize, .1f, currentCardHandleGridPos.y * gridSize),
+            new Vector3(currentCardHandleGridPos.x * gridSize, .12f, currentCardHandleGridPos.y * gridSize),
             ref cursorVelocity,
             cursorMoveTime
         );
@@ -209,7 +208,7 @@ public class CardPlacementManager : MonoBehaviour
         cursorGO.SetActive(true);
 
         currentCardHandleUI = ui;
-        currentCardHandle = Instantiate(cardPrefab, transform);
+        currentCardHandle = Instantiate(card.cardPrefabs.GetRandom(), transform);
         currentCardHandle.Setup(card);
 
         Vector2 mousePos = mousePosition.action.ReadValue<Vector2>();
@@ -355,7 +354,7 @@ public class CardPlacementManager : MonoBehaviour
                 if (cards.ContainsKey(pos1))
                 {
                     card = cards[pos1];
-                    card.GetData().ApplyEffectToNeighbour(card);
+                    card.GetData().ApplyEffectToNeighbour(card, transform);
                 }
 
                 if (dy != 0)
@@ -365,7 +364,7 @@ public class CardPlacementManager : MonoBehaviour
                     if (cards.ContainsKey(pos2))
                     {
                         card = cards[pos2];
-                        card.GetData().ApplyEffectToNeighbour(card);
+                        card.GetData().ApplyEffectToNeighbour(card, transform);
                     }
                 }
             }
@@ -378,6 +377,34 @@ public class CardPlacementManager : MonoBehaviour
         InventoryManager.Instance.AddNewCard();
 
         canPlaceCard = true;
+    }
+
+    public void ReplaceCardInDictionary(Vector2Int pos, Card newCard)
+    {
+        cards[pos] = newCard;
+    }
+
+    public void OnCardReplaced(Card oldCard, Card newCard)
+    {
+        // On cherche la clé (position) associée à l'ancienne carte
+        Vector2Int keyToUpdate = default;
+        bool found = false;
+
+        foreach (var kvp in cards)
+        {
+            if (kvp.Value == oldCard)
+            {
+                keyToUpdate = kvp.Key;
+                found = true;
+                break;
+            }
+        }
+
+        // Si on l'a trouvée, on met à jour la valeur dans le dictionnaire
+        if (found)
+        {
+            cards[keyToUpdate] = newCard;
+        }
     }
 
     private void OnDrawGizmosSelected()

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SSO_CardData_Trees", menuName = "SSO/Cards/SSO_CardData_Trees")]
 public class SSO_CardData_Trees : SSO_CardData
 {
-    public override void ApplyEffectToNeighbour(Card card)
+    public override void ApplyEffectToNeighbour(Card card, Transform content)
     {
         Card[] neighbours = card.GetNeighbours();
 
@@ -39,6 +39,9 @@ public class SSO_CardData_Trees : SSO_CardData
             }
         }
 
-        card.ChangeData(currentData);
+        if (currentData != cardsAvailable.Swamp)
+            card = ReplaceCards(card, currentData, content);
+
+        card.WaveShake();
     }
 }

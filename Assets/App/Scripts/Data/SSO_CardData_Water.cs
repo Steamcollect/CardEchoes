@@ -1,9 +1,10 @@
+using ToolBox.Utils;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SSO_CardData_Water", menuName = "SSO/Cards/SSO_CardData_Water")]
 public class SSO_CardData_Water : SSO_CardData
 {
-    public override void ApplyEffectToNeighbour(Card card)
+    public override void ApplyEffectToNeighbour(Card card, Transform content)
     {
         Card[] neighbours = card.GetNeighbours();
 
@@ -40,6 +41,9 @@ public class SSO_CardData_Water : SSO_CardData
             }
         }
 
-        card.ChangeData(currentData);
+        if (currentData != cardsAvailable.Water)
+            card = ReplaceCards(card, currentData, content);
+
+        card.WaveShake();
     }
 }

@@ -9,34 +9,24 @@ public class Card : MonoBehaviour
     [SerializeField] float yOffset;
 
     [Header("References")]
-    [SerializeField] MeshRenderer iconGraphics;
-    [SerializeField] MeshRenderer visualGraphics;
+    [SerializeField] GameObject rectoGO;
+    [SerializeField] GameObject versoGO;
     Card[] neighbours;
 
-    SSO_CardData cardData;
-    
+    SSO_CardData data;
+
     //[Header("Input")]
     //[Header("Output")]
 
     public void Setup(SSO_CardData data)
     {
-        cardData = data;
-
-        iconGraphics.material = new Material(iconGraphics.material);
-        iconGraphics.material.mainTexture = cardData.cardTextureIcon;
-
-        visualGraphics.material = new Material(visualGraphics.material);
-        visualGraphics.material.mainTexture = cardData.cardTextureVisual;
+        this.data = data;
     }
 
-    public void ChangeData(SSO_CardData data)
+    public void WaveShake()
     {
         transform.DOMoveY(transform.position.y + yOffset, shakeDuration / 2).SetLoops(2, LoopType.Yoyo);
         transform.DOPunchRotation(Vector3.up * shakeAngle, shakeDuration, 20, 1);
-        cardData = data;
-        visualGraphics.material.mainTexture = cardData.cardTextureVisual;
-
-        ScoreManager.Instance.AddScore(1);
     }
 
     public void SetNeighbours(Card[] neighbours)
@@ -46,13 +36,11 @@ public class Card : MonoBehaviour
 
     public SSO_CardData GetData()
     {
-        return cardData;
+        return data;
     }
 
-    public MeshRenderer GetGraphics()
-    {
-        return iconGraphics;
-    }
+    public void SetActiveRecto(bool active) { rectoGO.SetActive(active); }
+    public void SetActiveVerso(bool active) { versoGO.SetActive(active); }
 
     public Card[] GetNeighbours()
     {
