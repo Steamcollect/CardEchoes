@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     //[Header("Settings")]
 
+    public static AudioManager Instance;
     private bool lastMusicWasA;
 
     //[Header("References")]
@@ -14,6 +16,11 @@ public class AudioManager : MonoBehaviour
 
     //[Header("Input")]
     //[Header("Output")]
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnEnable()
     {
