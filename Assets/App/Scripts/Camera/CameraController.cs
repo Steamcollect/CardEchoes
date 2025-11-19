@@ -14,6 +14,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] float shakeAngle = 15;
     [SerializeField] float shakeDuration = 0.2f;
 
+    [Header("Zoom Settings")]
+    [SerializeField] private InputActionReference zoomInput;
+    [SerializeField] private float zoomSpeed = 5f;
+    [SerializeField] private float maxZoomDistance = 20f;
+
+    private float currentZoom = 0f;
+    private Vector3 initialPosition;
+
     [Header("References")]
     [SerializeField] private InputActionReference moveInput;
 
@@ -24,11 +32,13 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        initialPosition = transform.position;
     }
 
     private void Update()
     {
         HandleMovement();
+        HandleZoom();
     }
 
     private void HandleMovement()
@@ -51,6 +61,22 @@ public class CameraController : MonoBehaviour
         );
     }
 
+    private void HandleZoom()
+    {
+        float scrollValue = zoomInput.action.ReadValue<Vector2>().y;
+
+        if (Mathf.Abs(scrollValue) > 0.01f)
+        {
+            // Mise à jour du zoom souhaité
+            currentZoom += scrollValue * zoomSpeed;
+
+            // Clamp pour ne pas dépasser la distance max avant/arrière
+            currentZoom = Mathf.Clamp(currentZoom, -maxZoomDistance, maxZoomDistance);
+
+            // Nouvelle position = position initiale + forward * zoom
+            transform.position = initialPosition + transform.forward * currentZoom;
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
