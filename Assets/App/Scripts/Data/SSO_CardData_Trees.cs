@@ -42,7 +42,7 @@ public class SSO_CardData_Trees : SSO_CardData
             }
         }
 
-        if (currentData != cardsAvailable.Swamp)
+        if (currentData != cardsAvailable.Tree)
             card = ReplaceCards(card, currentData, content);
 
         card.WaveShake();
