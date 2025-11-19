@@ -12,6 +12,8 @@ public class CardPlacementManager : MonoBehaviour
     public int gridSize = 1;
     [SerializeField] float timeBetweenWave = .2f;
 
+    [HideInInspector] public bool canPlaceCard = true;
+
     [Space(10)]
     [SerializeField] Vector2Int minMaxXCadPos;
     [SerializeField] Vector2Int minMaxYCadPos;
@@ -246,6 +248,8 @@ public class CardPlacementManager : MonoBehaviour
             return;
         }
 
+        canPlaceCard = false;
+
         cursorGO.SetActive(false);
 
         GameObject objToDestroy = null;
@@ -372,6 +376,8 @@ public class CardPlacementManager : MonoBehaviour
         while(iterations <= maxIteration);
 
         InventoryManager.Instance.AddNewCard();
+
+        canPlaceCard = true;
     }
 
     private void OnDrawGizmosSelected()

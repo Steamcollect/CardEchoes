@@ -17,6 +17,7 @@ public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (CardPlacementManager.Instance?.canPlaceCard == false) return;
         _OnPointerClick?.Invoke();
     }
 
@@ -29,6 +30,8 @@ public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (CardPlacementManager.Instance?.canPlaceCard == false) return;
+
         transform.DOScale(1, shakeDuration).SetEase(Ease.OutBack);
         _OnPointerExit?.Invoke();
     }
