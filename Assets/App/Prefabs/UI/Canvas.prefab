@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a598ce9cdc4fe544996ed9ea2b32ec56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TooltipBehaviour
-  offsetTooltip: {x: 0, y: 0, z: 0}
+  offsetTooltip: {x: 0, y: 120, z: 0}
   tooltip: {fileID: 205484259845446237}
 --- !u!1 &8393004708246351230
 GameObject:
