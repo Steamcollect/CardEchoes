@@ -35,6 +35,8 @@ public class Card : MonoBehaviour
         transform.DOPunchRotation(Vector3.up * shakeAngle, shakeDuration, 20, 1);
         cardData = data;
         visualGraphics.material.mainTexture = cardData.cardTextureVisual;
+
+        ScoreManager.Instance.AddScore(1);
     }
 
     public void SetNeighbours(Card[] neighbours)

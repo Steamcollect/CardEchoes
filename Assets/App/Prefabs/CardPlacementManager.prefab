@@ -83,7 +83,7 @@ MonoBehaviour:
   anim2Time: 0.3
   anim2CardPosOffset: {x: 0, y: 1.2, z: 0}
   anim2CardRot: {x: 180, y: 0, z: 0}
-  anim3Time: 0.08
+  anim3Time: 0.06
   mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   placeCardHandle: {fileID: -978304505037387235, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
