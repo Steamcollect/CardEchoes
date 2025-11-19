@@ -42,7 +42,6 @@ public class MenuManager : MonoBehaviour
         if (menuPause != null)
         {
             menuPause.SetActive(true);
-            AudioManager.Instance.PauseMusic();
             Time.timeScale = 0f;
             isPaused = true;
         }
@@ -53,7 +52,6 @@ public class MenuManager : MonoBehaviour
         if (menuPause != null)
         {
             menuPause.SetActive(false);
-            AudioManager.Instance.ResumeMusic();
             Time.timeScale = 1f;
             isPaused = false;
         }
