@@ -1,6 +1,5 @@
 using UnityEngine;
 using ToolBox.Utils;
-using System.Collections.Generic;
 
 public class SSO_CardData : ScriptableObject
 {

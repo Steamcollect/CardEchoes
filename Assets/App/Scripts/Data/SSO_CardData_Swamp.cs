@@ -22,15 +22,15 @@ public class SSO_CardData_Swamp : SSO_CardData
                 currentPriority = 2;
                 currentData = cardsAvailable.Plant;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
+            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 3)
             {
                 currentPriority = 3;
-                currentData = cardsAvailable.Swamp;
+                currentData = cardsAvailable.Plant;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 4)
+            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 4)
             {
                 currentPriority = 4;
-                currentData = cardsAvailable.Plant;
+                currentData = cardsAvailable.Swamp;
             }
             else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 5)
             {
