@@ -32,7 +32,7 @@ public class CardControllerUI : MonoBehaviour
 
     void ShowTooltip()
     {
-        TooltipBehaviour.Instance?.ShowTooltip(cardData, transform.position);
+        TooltipBehaviour.Instance?.ShowTooltip(cardData, trigger.transform.position);
     }
     void HidetoolTip()
     {

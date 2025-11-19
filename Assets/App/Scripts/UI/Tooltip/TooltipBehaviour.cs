@@ -3,13 +3,15 @@ using UnityEngine;
 public class TooltipBehaviour : MonoBehaviour
 {
     //[Header("Settings")]
+
+    [SerializeField] Vector3 offsetTooltip;
     //[Header("References")]
-    //[Header("Input")]
-    //[Header("Output")]
 
     public static TooltipBehaviour Instance;
-
     [SerializeField] private TooltipManager tooltip;
+
+    //[Header("Input")]
+    //[Header("Output")]
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class TooltipBehaviour : MonoBehaviour
         tooltip.gameObject.SetActive(true);
         RectTransform tooltipRect = tooltip.gameObject.GetComponent<RectTransform>();
         float heightRect = tooltipRect.rect.height / 2;
-        Vector3 offsetPosition = triggerPosition + new Vector3(0, heightRect, 0);
+        Vector2 offsetPosition = (triggerPosition + new Vector3(0, heightRect, 0)) + offsetTooltip;
         tooltip.transform.position = offsetPosition;
     }
 
