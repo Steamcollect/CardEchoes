@@ -408,6 +408,12 @@ public class CardPlacementManager : MonoBehaviour
         }
         while(iterations <= maxIteration);
 
+        if (ScoreManager.Instance.CheckVictoryCondition(cards))
+        {
+            Debug.Log("You Win");
+            yield break;
+        }
+
         InventoryManager.Instance.AddNewCard();
 
         canPlaceCard = true;
