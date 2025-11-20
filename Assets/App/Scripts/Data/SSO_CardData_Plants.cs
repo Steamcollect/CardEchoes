@@ -20,7 +20,11 @@ public class SSO_CardData_Plants : SSO_CardData
                 currentPriority = 1;
                 currentData = cardsAvailable.Tree;
             }
-            
+            else if(neighbours[i].GetData() is SSO_CardData_House && currentPriority > 2)
+            {
+                currentPriority = 2;
+                currentData = cardsAvailable.House;
+            }            
         }
 
         if (currentData != cardsAvailable.Plant)

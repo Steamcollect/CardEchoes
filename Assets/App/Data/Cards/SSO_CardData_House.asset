@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dabd29dd9ace4df4ea206915d29c9964, type: 3}
+  m_Name: SSO_CardData_House
+  m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_House
+  cardName: Maison
+  cardDescription: 
+  cardPrefabs:
+  - {fileID: 9192693580246596079, guid: 019bb4a4f14baa244a4121b88c61359d, type: 3}
+  - {fileID: 2227677326536307980, guid: 6302104e161f2b543bb4c766706cb753, type: 3}
+  - {fileID: 4285991719191460656, guid: 2ba7b87f6f7348a44a777c0a83f58068, type: 3}
+  cardUIIcon: {fileID: 6549052225177430975, guid: 0022053453d25ba4ca3e615a854746e8, type: 3}
+  cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

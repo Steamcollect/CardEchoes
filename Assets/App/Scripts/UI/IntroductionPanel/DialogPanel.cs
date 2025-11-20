@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogPanel : MonoBehaviour
 {
     [SerializeField, TextArea] string[] introductionTexts;
+    [SerializeField, TextArea] string[] conditionWinTexts;
     int i = 0;
 
     [Space(10)]
