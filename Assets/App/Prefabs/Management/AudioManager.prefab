@@ -65,10 +65,10 @@ MonoBehaviour:
   transitionFadeInDelay: 0.5
   playlist:
   - clip: {fileID: 8300000, guid: 0d760966d51e39648a3c412dd9707d29, type: 3}
-    volumMultiplier: 0.8
+    volumMultiplier: 0.7
     isLooping: 1
   - clip: {fileID: 8300000, guid: ca1baa40e67decf45972b2103f250351, type: 3}
-    volumMultiplier: 0.1
+    volumMultiplier: 0.2
     isLooping: 1
   - clip: {fileID: 8300000, guid: b043d1d8abf787d489e547b1c4d953dc, type: 3}
     volumMultiplier: 0.015
