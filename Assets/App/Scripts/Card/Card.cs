@@ -23,6 +23,29 @@ public class Card : MonoBehaviour
         this.data = data;
     }
 
+    public void SetLayer(LayerMask layerMask)
+    {
+        int maskValue = layerMask.value;
+
+        if (maskValue == 0 || (maskValue & (maskValue - 1)) != 0)
+        {
+            Debug.LogError($"LayerMask {layerMask} n’a pas exactement un seul layer actif !");
+            return;
+        }
+
+        int layer = Mathf.RoundToInt(Mathf.Log(maskValue, 2));
+
+        ApplyLayerRecursively(transform, layer);
+    }
+
+    private void ApplyLayerRecursively(Transform t, int layer)
+    {
+        t.gameObject.layer = layer;
+
+        foreach (Transform child in t)
+            ApplyLayerRecursively(child, layer);
+    }
+
     public void WaveShake()
     {
         transform.DOMoveY(transform.position.y + yOffset, shakeDuration / 2).SetLoops(2, LoopType.Yoyo);
