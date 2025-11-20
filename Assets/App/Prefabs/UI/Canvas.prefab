@@ -1481,6 +1481,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f38226e80e71e2d4990a74a6c2397869, type: 2}
   - {fileID: 11400000, guid: f2f75059609fb234d90cf6803b657a62, type: 2}
   - {fileID: 11400000, guid: 4c2d9ad83b63e4341a0f553a292cced3, type: 2}
+  - {fileID: 11400000, guid: ad050d704c9beda4abc2b2a62246466e, type: 2}
   cardUIPrefabs: {fileID: 5914906418974657700, guid: 34de509c13fe9dd41915f0395ba09f9b, type: 3}
   cardsContent: {fileID: 6056357130987632696}
 --- !u!114 &7960723787807929067

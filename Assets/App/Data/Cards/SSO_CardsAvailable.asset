@@ -17,3 +17,4 @@ MonoBehaviour:
   Plant: {fileID: 11400000, guid: f2f75059609fb234d90cf6803b657a62, type: 2}
   Tree: {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
   Swamp: {fileID: 11400000, guid: f38226e80e71e2d4990a74a6c2397869, type: 2}
+  Fire: {fileID: 11400000, guid: ad050d704c9beda4abc2b2a62246466e, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16c28442a6f3bd4892bd5d7d51c1345, type: 3}
+  m_Name: SSO_CardData_Fire
+  m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Fire
+  cardName: "Feux de For\xEAt"
+  cardDescription: "Les flammes s\u2019\xE9tendent \xE0 tous les arbres adjacents."
+  cardPrefabs:
+  - {fileID: 6708235103482805930, guid: bb1bcb6a4c92e9449b9471644fe74bbd, type: 3}
+  - {fileID: 6708235103482805930, guid: f7fffdaa1aff58b4a8f790e50371016e, type: 3}
+  - {fileID: 6708235103482805930, guid: 3487b4056bf62ee41b0585a42f275215, type: 3}
+  cardUIIcon: {fileID: 21300000, guid: 7a8e9f4d2b6534641a918a22ca60bf7a, type: 3}
+  cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

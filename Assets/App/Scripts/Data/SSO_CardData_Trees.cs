@@ -15,31 +15,16 @@ public class SSO_CardData_Trees : SSO_CardData
             if (neighbours[i] == null)
                 continue;
 
-            if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 1)
+            if (neighbours[i].GetData() is SSO_CardData_Fire && currentPriority > 1)
             {
                 currentPriority = 1;
-                currentData = cardsAvailable.Plant;
+                currentData = cardsAvailable.Fire;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 2)
+            else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 2)
             {
                 currentPriority = 2;
-                currentData = cardsAvailable.Swamp;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 3)
-            {
-                currentPriority = 3;
                 currentData = cardsAvailable.Plant;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 4)
-            {
-                currentPriority = 4;
-                currentData = cardsAvailable.Tree;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 5)
-            {
-                currentPriority = 5;
-                currentData = cardsAvailable.Tree;
-            }
+            }            
         }
 
         if (currentData != cardsAvailable.Tree)

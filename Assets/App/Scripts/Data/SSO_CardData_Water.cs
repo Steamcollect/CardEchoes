@@ -16,36 +16,23 @@ public class SSO_CardData_Water : SSO_CardData
             if (neighbours[i] == null)
                 continue;
 
-            if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 1)
-            {
-                currentPriority = 1;
-                currentData = cardsAvailable.Swamp;
-                break;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 2)
+            if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 2)
             {
                 currentPriority = 2;
                 currentData = cardsAvailable.Water;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
+            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 1)
             {
-                currentPriority = 3;
-                currentData = cardsAvailable.Water;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 4)
-            {
-                currentPriority = 4;
-                currentData = cardsAvailable.Water;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 5)
-            {
-                currentPriority = 5;
-                currentData = cardsAvailable.Water;
+                currentPriority = 1;
+                currentData = cardsAvailable.Swamp;
             }
         }
 
         if (currentData != cardsAvailable.Water)
+        {
             card = ReplaceCards(card, currentData, content);
+        }
+            
 
         card.WaveShake();
     }
