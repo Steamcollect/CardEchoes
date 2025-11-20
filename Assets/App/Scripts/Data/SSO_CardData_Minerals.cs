@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SSO_CardData_Minerals", menuName = "SSO/Cards/SSO_CardData_Minerals")]
 public class SSO_CardData_Minerals : SSO_CardData
 {
-    public override void ApplyEffectToNeighbour(Card card, Transform content)
+    /*public override void ApplyEffectToNeighbour(Card card, Transform content)
     {
         Card[] neighbours = card.GetNeighbours();
 
@@ -47,5 +47,5 @@ public class SSO_CardData_Minerals : SSO_CardData
             card = ReplaceCards(card, currentData, content);
 
         card.WaveShake();
-    }
+    }*/
 }

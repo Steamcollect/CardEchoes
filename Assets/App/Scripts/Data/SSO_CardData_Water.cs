@@ -16,9 +16,6 @@ public class SSO_CardData_Water : SSO_CardData
             if (neighbours[i] == null)
                 continue;
 
-            if (neighbours[i] == null)
-                continue;
-
             if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 1)
             {
                 currentPriority = 1;
