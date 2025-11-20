@@ -1,7 +1,8 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-public class IntroductionPanel : MonoBehaviour
+public class DialogPanel : MonoBehaviour
 {
     [SerializeField, TextArea] string[] introductionTexts;
     int i = 0;
@@ -22,6 +23,7 @@ public class IntroductionPanel : MonoBehaviour
         {
             introductionTxt.text = introductionTexts[i];
             introductionPanelGO.SetActive(true);
+            introductionPanelGO.transform.DOScale(1.1f, .08f).SetLoops(2, LoopType.Yoyo);
         }
     }
 

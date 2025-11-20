@@ -3000,10 +3000,6 @@ PrefabInstance:
       value: Tooltip
       objectReference: {fileID: 0}
     - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: bd3577138fd5b3345a043fc68eb7cc00, type: 2}
-    - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
