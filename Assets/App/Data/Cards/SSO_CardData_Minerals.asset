@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 7883206351319336180, guid: e6404d77046e4614fbb5e8e61d99dea3, type: 3}
   - {fileID: 7883206351319336180, guid: 571049e529b05f2469c678b2ed1c9a00, type: 3}
   - {fileID: 7883206351319336180, guid: 2dcff6e991916cc4ebd9bfc6b34e9d1e, type: 3}
-  cardUIIcon: {fileID: 21300000, guid: 0dd30a558ec7d694788f429c3456c1d9, type: 3}
+  cardUIIcon: {fileID: 2950682710584556385, guid: 204d4585459e40f44b177d77928d0964, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

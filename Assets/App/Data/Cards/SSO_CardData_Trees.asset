@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 1452492152572843911, guid: b891cd397219fa24cbf6570640238610, type: 3}
   - {fileID: 1452492152572843911, guid: 8923a99a91a703141bd461bb79ac5e27, type: 3}
   - {fileID: 1452492152572843911, guid: 44eb055e8ef9e3443a86d7f38e16de37, type: 3}
-  cardUIIcon: {fileID: 21300000, guid: faeef74395407ab4ab3e105a601573c1, type: 3}
+  cardUIIcon: {fileID: 1332896423391306891, guid: 0c34b66272db0574284d61df37459a97, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}
