@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using ToolBox.Utils;
 using UnityEngine;
-using static UnityEngine.Rendering.GPUSort;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] int startingCardCount;
-    [SerializeField] SSO_CardData[] cardsDataAvailable;
+    [SerializeField] List<SSO_CardData> cardsDataAvailable = new();
 
     [Header("References")]
     [SerializeField] CardControllerUI cardUIPrefabs;
@@ -96,5 +95,10 @@ public class InventoryManager : MonoBehaviour
     {
         currentCards.Remove(card);
         Destroy(card.gameObject);
+    }
+
+    public void AddCard(SSO_CardData card)
+    {
+        cardsDataAvailable.Add(card);
     }
 }

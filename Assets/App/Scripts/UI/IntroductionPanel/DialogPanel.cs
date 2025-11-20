@@ -13,6 +13,13 @@ public class DialogPanel : MonoBehaviour
     [SerializeField] TMP_Text introductionTxt;
     [SerializeField] Animator cardsContentAnim;
 
+    public static DialogPanel Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         if(introductionTexts.Length <= 0)
@@ -26,6 +33,15 @@ public class DialogPanel : MonoBehaviour
             introductionPanelGO.SetActive(true);
             introductionPanelGO.transform.DOScale(1.1f, .08f).SetLoops(2, LoopType.Yoyo);
         }
+    }
+
+    public void SetConditionWinPanel()
+    {
+        i = 0;
+        introductionTexts = conditionWinTexts;
+        introductionTxt.text = introductionTexts[i];
+        introductionPanelGO.SetActive(true);
+        introductionPanelGO.transform.DOScale(1.1f, .08f).SetLoops(2, LoopType.Yoyo);
     }
 
     public void NextButton()

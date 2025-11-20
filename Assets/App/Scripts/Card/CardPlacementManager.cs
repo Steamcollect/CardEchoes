@@ -516,11 +516,7 @@ public class CardPlacementManager : MonoBehaviour
         }
         while(iterations <= maxIteration);
 
-        if (ScoreManager.Instance.CheckVictoryCondition(cards))
-        {
-            Debug.Log("You Win");
-            yield break;
-        }
+        ScoreManager.Instance.CheckVictoryCondition(cards);
 
         InventoryManager.Instance.AddNewCard();
 

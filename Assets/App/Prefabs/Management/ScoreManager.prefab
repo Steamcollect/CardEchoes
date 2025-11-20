@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreTargetData: {fileID: 11400000, guid: 38aab0928832aea4896e34a951227260, type: 2}
+  houseCardData: {fileID: 11400000, guid: 8d2fa6e310b0b92458cbf75152c15d37, type: 2}

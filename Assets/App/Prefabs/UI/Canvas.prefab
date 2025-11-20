@@ -1496,7 +1496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ab3975518fab8428056c032e3b49a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroductionPanel
-  introductionTexts: []
+  introductionTexts:
+  - Il est temps que je me trouve un endroit pour vivre !
+  conditionWinTexts:
+  - "Super, maintenant que j'ai trouv\xE9 un coin sympa\nJe vais pouvoir poser ma
+    maison !"
   introductionPanelGO: {fileID: 2703950257263476980}
   introductionTxt: {fileID: 3115648910406446628}
   cardsContentAnim: {fileID: 1053129774387670473}

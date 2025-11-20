@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
     //[Header("Settings")]
     [Header("References")]
     [SerializeField] SSO_ScoreTargetData scoreTargetData;
+    [SerializeField] SSO_CardData_House houseCardData;
     
     //[Header("Input")]
     //[Header("Output")]
@@ -57,7 +58,9 @@ public class ScoreManager : MonoBehaviour
         if (waterPerc < scoreTargetData.Water_minMaxTargetPercenage.x || waterPerc > scoreTargetData.Water_minMaxTargetPercenage.y) return false;
         if (mineralPerc < scoreTargetData.Mineral_minMaxTargetPercenage.x || mineralPerc > scoreTargetData.Mineral_minMaxTargetPercenage.y) return false;
 
-        // Toutes les conditions sont remplies -> VICTOIRE !
+        InventoryManager.Instance.AddCard(houseCardData);
+        DialogPanel.Instance.SetConditionWinPanel();
+
         return true;
     }
 
