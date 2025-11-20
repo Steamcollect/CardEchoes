@@ -19837,14 +19837,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 131976291454696069, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4587999602207379664, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: startingCardCount
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5051680496659180227, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -19931,10 +19923,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6113657058280838710, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7960723787807929067, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: introductionTexts.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
