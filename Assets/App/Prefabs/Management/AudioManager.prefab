@@ -64,7 +64,7 @@ MonoBehaviour:
   transitionFadeOutDelay: 0.5
   transitionFadeInDelay: 0.5
   playlist:
-  - clip: {fileID: 8300000, guid: a5daf55e4175e2d40a73cdf886337fb4, type: 3}
+  - clip: {fileID: 8300000, guid: 0d760966d51e39648a3c412dd9707d29, type: 3}
     volumMultiplier: 0.8
     isLooping: 1
   - clip: {fileID: 8300000, guid: ca1baa40e67decf45972b2103f250351, type: 3}

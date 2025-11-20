@@ -112,6 +112,46 @@ MonoBehaviour:
     - {fileID: 8300000, guid: ca04faa761fa68b4c8540b9cbc566ad0, type: 3}
     - {fileID: 8300000, guid: 65a78ef217597b24cbfada46a3ba2232, type: 3}
     - {fileID: 8300000, guid: 1871d975b041f3b448c17c98107f0d3c, type: 3}
+  tileAnim1Sound:
+    volumeMultiplier: 0.3
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: e6e67798ec6d7e441891ac56328290f3, type: 3}
+    - {fileID: 8300000, guid: a30cad9e91d631c46a2bb99b1e1da867, type: 3}
+    - {fileID: 8300000, guid: 13c9889145697d0458fe4baae64a6572, type: 3}
+    - {fileID: 8300000, guid: 0d2bfb6386ca40545902269d5cd733a8, type: 3}
+    - {fileID: 8300000, guid: 6d9b5ca10259f7341bbb29f9527c092c, type: 3}
+    - {fileID: 8300000, guid: 8abdd190a698935489d0a1fe469d39bb, type: 3}
+  tilePlaceTreeSound:
+    volumeMultiplier: 0.5
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: 01ce5c41cdc6e22418279080aa944fa1, type: 3}
+  tilePlaceWaterSound:
+    volumeMultiplier: 0.6
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: e3ce6fe9149eb9f419f849518618a012, type: 3}
+  tilePlaceSwampSound:
+    volumeMultiplier: 0.6
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: e3ce6fe9149eb9f419f849518618a012, type: 3}
+  tilePlacePlantSound:
+    volumeMultiplier: 0.5
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: fa71855d3973a054b8eca0ca5e207d0e, type: 3}
+  tilePlaceMineralsSound:
+    volumeMultiplier: 0.5
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: 7a1691c12ba4fcf42a9f2e3f3186fe23, type: 3}
+  tilePlaceFireSound:
+    volumeMultiplier: 0.5
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: 3d622c756d2956d40bc8c81ae6b06df7, type: 3}
   mousePosition: {fileID: 6197448488483910291, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   placeCardHandle: {fileID: -978304505037387235, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   clearCardHandle: {fileID: -2359360499492977457, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

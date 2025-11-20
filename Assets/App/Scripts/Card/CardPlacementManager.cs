@@ -72,8 +72,16 @@ public class CardPlacementManager : MonoBehaviour
 
     CardControllerUI currentCardHandleUI;
     Card currentCardHandle;
+
     [Tab("Audio")]
     [SerializeField] Sound tileSwapSound;
+    [SerializeField] Sound tileAnim1Sound;
+    [SerializeField] Sound tilePlaceTreeSound;
+    [SerializeField] Sound tilePlaceWaterSound;
+    [SerializeField] Sound tilePlaceSwampSound;
+    [SerializeField] Sound tilePlacePlantSound;
+    [SerializeField] Sound tilePlaceMineralsSound;
+    [SerializeField] Sound tilePlaceFireSound;
 
     [Tab("References")]
     [Header("Input")]
@@ -391,9 +399,11 @@ public class CardPlacementManager : MonoBehaviour
     {
         Transform cardHandle = currentCardHandle.transform;
         Card cCard = currentCardHandle;
+        SSO_CardData data = cCard.GetData();
         currentCardHandle = null;
 
         cCard.SetActiveRecto(true);
+        AudioManager.Instance.PlayClipAt(tileAnim1Sound, Vector3.zero);
         cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x * gridSize, 0, currentCardHandleGridPos.y * gridSize) + tilePosOffset, anim1Time);
         cardHandle.DORotate(anim1ShowCardRot, anim1Time).OnComplete(() =>
         {
@@ -402,7 +412,29 @@ public class CardPlacementManager : MonoBehaviour
             {
                 cCard.SetLayer(defaultLayerMask);
                 cCard.SetActiveVerso(false);
-                cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time);
+                AudioManager.Instance.PlayClipAt(tileAnim1Sound, Vector3.zero);
+                cardHandle.DOMove(new Vector3(currentCardHandleGridPos.x, 0, currentCardHandleGridPos.y), anim3Time).OnComplete(() =>
+                {
+                    if (data is SSO_CardData_Minerals)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlaceMineralsSound, Vector3.zero);
+                    } else if (data is SSO_CardData_Plants)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlacePlantSound, Vector3.zero);
+                    } else if (data is SSO_CardData_Swamp)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlaceSwampSound, Vector3.zero);
+                    } else if (data is SSO_CardData_Trees)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlaceTreeSound, Vector3.zero);
+                    } else if (data is SSO_CardData_Water)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlaceWaterSound, Vector3.zero);
+                    } else if (data is SSO_CardData_Fire)
+                    {
+                        AudioManager.Instance.PlayClipAt(tilePlaceFireSound, Vector3.zero);
+                    }
+                });
             });
         });
 
