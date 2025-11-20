@@ -21,9 +21,15 @@ public class SSO_CardData_Minerals : SSO_CardData
                 currentData = cardsAvailable.Plant;
                 break;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 2)
+            if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 2)
             {
                 currentPriority = 2;
+                currentData = cardsAvailable.Plant;
+                break;
+            }
+            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 3)
+            {
+                currentPriority = 3;
                 currentData = cardsAvailable.Swamp;
             }
             
