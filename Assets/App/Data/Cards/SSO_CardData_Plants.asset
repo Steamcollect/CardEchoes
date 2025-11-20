@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca7e5f62c6d24b4eb69be79fcf0681e, type: 3}
   m_Name: SSO_CardData_Plants
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Plants
-  cardName: Plants
-  cardDescription: 
+  cardName: Herbes Fraiches
+  cardDescription: Les Herbes Fraiches proliferent rapidement sur un terrain boueux.
   cardPrefabs:
   - {fileID: -7738247203600381785, guid: 9255e7cc7fff8c4449a13dac017f41e4, type: 3}
   - {fileID: -7738247203600381785, guid: 76ab2bdb78402b8428dc0a6170b6cf63, type: 3}

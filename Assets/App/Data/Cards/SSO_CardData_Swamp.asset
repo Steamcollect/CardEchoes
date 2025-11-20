@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46e9c1a6e7ed3a4b9efa899f44b61be, type: 3}
   m_Name: SSO_CardData_Swamp
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Swamp
-  cardName: Swamp
-  cardDescription: 
+  cardName: Marais
+  cardDescription: Les Marais disparaissent lorsqu'il y a trop d'Eau.
   cardPrefabs:
   - {fileID: -3780712894497361261, guid: 8f3b3e328a1e1f5419a083e5673ccb45, type: 3}
   - {fileID: -3780712894497361261, guid: 2d1db7c68bd0bbf49a4072e8ba0a6960, type: 3}

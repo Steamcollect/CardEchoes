@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cde44ed427870940acbdf7aa710dd45, type: 3}
   m_Name: SSO_CardData_Minerals
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Minerals
-  cardName: Minerals
-  cardDescription: 
+  cardName: Boue
+  cardDescription: 'Lorsque la Boue est en contact avec l''Eau, elle se transforme
+    en Marais.
+
+'
   cardPrefabs:
   - {fileID: 7883206351319336180, guid: e6404d77046e4614fbb5e8e61d99dea3, type: 3}
   - {fileID: 7883206351319336180, guid: 571049e529b05f2469c678b2ed1c9a00, type: 3}
