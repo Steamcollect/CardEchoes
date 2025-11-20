@@ -1,5 +1,7 @@
-﻿using ToolBox.Utils;
+﻿using System.Collections.Generic;
+using ToolBox.Utils;
 using UnityEngine;
+using static UnityEngine.Rendering.GPUSort;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -17,6 +19,8 @@ public class InventoryManager : MonoBehaviour
     [Header("References")]
     [SerializeField] CardControllerUI cardUIPrefabs;
     [SerializeField] Transform cardsContent;
+
+    List<CardControllerUI> currentCards = new List<CardControllerUI>();
 
     //[Header("Input")]
     //[Header("Output")]
@@ -38,8 +42,28 @@ public class InventoryManager : MonoBehaviour
 
     public void AddNewCard()
     {
+        // 1. Récupérer toutes les cartes déjà placées sur le board
+        HashSet<SSO_CardData> placed = new HashSet<SSO_CardData>(GetAllPlacedCardData());
+
+        // 2. Filtrer les cartes disponibles : on enlève celles déjà placées
+        List<SSO_CardData> pool = new List<SSO_CardData>();
+        foreach (var c in cardsDataAvailable)
+        {
+            if (!placed.Contains(c))
+                pool.Add(c);
+        }
+
+        // 3. Si aucune carte neuve n’est dispo -> fallback : prendre dans toutes les cartes disponibles
+        if (pool.Count == 0)
+            pool.AddRange(cardsDataAvailable);
+
+        // 4. Choisir une carte parmi le pool valide
+        SSO_CardData chosen = pool.GetRandom();
+
+        // 5. Créer la carte UI et la setup avec cette carte
         CardControllerUI newCardUI = Instantiate(cardUIPrefabs, cardsContent);
-        newCardUI.Setup(cardsDataAvailable.GetRandom());
+        newCardUI.Setup(chosen);
+        currentCards.Add(newCardUI);
 
         // Update visuals
         int total = cardsContent.childCount;
@@ -60,5 +84,17 @@ public class InventoryManager : MonoBehaviour
                 card.UpdateVisual(angle, yOffset);
             }
         }
+    }
+
+    IEnumerable<SSO_CardData> GetAllPlacedCardData()
+    {
+        foreach (CardControllerUI kvp in currentCards)
+            yield return kvp.GetData();
+    }
+
+    public void RemoveCard(CardControllerUI card)
+    {
+        currentCards.Remove(card);
+        Destroy(card.gameObject);
     }
 }

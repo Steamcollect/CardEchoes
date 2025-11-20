@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1474,7 +1474,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  startingCardCount: 5
+  startingCardCount: 3
   cardsDataAvailable:
   - {fileID: 11400000, guid: ed1bebf2ac0839b44939a25280498b49, type: 2}
   - {fileID: 11400000, guid: 9635f18a400b11c459b0d1fb028f50c0, type: 2}
@@ -1495,11 +1495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ab3975518fab8428056c032e3b49a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroductionPanel
-  introductionTexts:
-  - Ceci est le premier test
-  - Puis le second
-  - "Allez salut bande de naze...\nyouhouuuuu\nj'ecrit sur 3 ligne j'en ai rien \xE0
-    foutre moiiiii"
+  introductionTexts: []
   introductionPanelGO: {fileID: 2703950257263476980}
   introductionTxt: {fileID: 3115648910406446628}
   cardsContentAnim: {fileID: 1053129774387670473}

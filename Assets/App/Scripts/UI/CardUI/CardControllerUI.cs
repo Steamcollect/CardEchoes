@@ -46,5 +46,6 @@ public class CardControllerUI : MonoBehaviour
 
     #region Getter
     public CardTriggerUI GetTrigger() { return trigger; }
+    public SSO_CardData GetData() { return cardData; }
     #endregion
 }

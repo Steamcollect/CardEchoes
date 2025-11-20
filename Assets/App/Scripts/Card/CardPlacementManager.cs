@@ -410,7 +410,7 @@ public class CardPlacementManager : MonoBehaviour
 
         CameraController.Instance.Shake();
 
-        Destroy(currentCardHandleUI.gameObject);
+        InventoryManager.Instance.RemoveCard(currentCardHandleUI);
         if(objToDestroy) Destroy(objToDestroy);
 
         StartCoroutine(CheckCardsNeighbour(currentCardHandleGridPos));
