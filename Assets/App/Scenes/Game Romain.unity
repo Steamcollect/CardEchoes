@@ -429,9 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f12cd6597e78f045936f2b53cbe92b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  scaleValue: 1.1
-  bumpDuration: 0.08
-  scoreTxt: {fileID: 324817273}
+  scoreTargetData: {fileID: 0}
 --- !u!1 &786500435
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,19 +914,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
       propertyPath: playlist.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
       propertyPath: playlist.Array.data[1].clip
       value: 
       objectReference: {fileID: 8300000, guid: ca1baa40e67decf45972b2103f250351, type: 3}
     - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: playlist.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b043d1d8abf787d489e547b1c4d953dc, type: 3}
+    - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
       propertyPath: playlist.Array.data[1].isLooping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: playlist.Array.data[2].isLooping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: playlist.Array.data[0].volumMultiplier
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
       propertyPath: playlist.Array.data[1].volumMultiplier
-      value: 0.3
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985881127127090968, guid: a92e85c6c61d14f4a9f4d0ae017fcadf, type: 3}
+      propertyPath: playlist.Array.data[2].volumMultiplier
+      value: 0.015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
