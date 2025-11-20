@@ -20,7 +20,11 @@ public class SSO_CardData_Swamp : SSO_CardData
                 currentPriority = 1;
                 currentData = cardsAvailable.Water;
             }
-            
+            else if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 2)
+            {
+                currentPriority = 2;
+                currentData = cardsAvailable.Plant;
+            }
         }
 
         if (currentData != cardsAvailable.Swamp)
