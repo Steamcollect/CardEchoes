@@ -573,12 +573,12 @@ GameObject:
   - component: {fileID: 2582288319020001294}
   - component: {fileID: 6710102239176698595}
   m_Layer: 5
-  m_Name: IntroductionPanel
+  m_Name: Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2070581406114567343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1100, y: -640.1747}
+  m_SizeDelta: {x: -1100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1337161524797750359
 CanvasRenderer:
@@ -1497,7 +1497,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroductionPanel
   introductionTexts:
-  - Il est temps que je me trouve un endroit pour vivre !
+  - '
+
+    I extracted this parchment from an old grimoire,
+
+    I must learn how
+    to use it so I can
+
+    place my village in a perfect location.'
+  - "* Extract from the Grimoire * \n\nPlace cards on the parchment\nin order to
+    manipulate the environment.\nEach card allows one to transform nature."
   conditionWinTexts:
   - "Super, maintenant que j'ai trouv\xE9 un coin sympa\nJe vais pouvoir poser ma
     maison !"
@@ -1540,7 +1549,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 410, y: -178.91}
-  m_SizeDelta: {x: 490.83, y: 237.82}
+  m_SizeDelta: {x: 490.83, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4755210729950025959
 CanvasRenderer:
@@ -1703,9 +1712,9 @@ RectTransform:
   - {fileID: 5242414554546313624}
   m_Father: {fileID: 2070581406114567343}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 410, y: -398.82266}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 42.0053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9032651517360374408
@@ -2794,7 +2803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a598ce9cdc4fe544996ed9ea2b32ec56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TooltipBehaviour
-  offsetTooltip: {x: 0, y: 120, z: 0}
+  offsetTooltip: {x: 0, y: 130, z: 0}
   tooltip: {fileID: 205484259845446237}
 --- !u!1 &8393004708246351230
 GameObject:
@@ -3004,6 +3013,10 @@ PrefabInstance:
       value: Tooltip
       objectReference: {fileID: 0}
     - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -3030,6 +3043,10 @@ PrefabInstance:
     - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8597226015939890475, guid: 47e340450b788074e849d3595b46728a, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8717688902026130004, guid: 47e340450b788074e849d3595b46728a, type: 3}
       propertyPath: m_Pivot.x

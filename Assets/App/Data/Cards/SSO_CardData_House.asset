@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabd29dd9ace4df4ea206915d29c9964, type: 3}
   m_Name: SSO_CardData_House
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_House
-  cardName: Maison
-  cardDescription: Bravo, vous avez l'environnement parfait pour construire une Maison.
-    Prenez en soin.
+  cardName: Village
+  cardDescription: '* Extract from Grimoire *
+
+    Congratulations, you have the
+    perfect environment to build a Village. Take care of it.'
   cardPrefabs:
   - {fileID: 9192693580246596079, guid: 019bb4a4f14baa244a4121b88c61359d, type: 3}
   - {fileID: 2227677326536307980, guid: 6302104e161f2b543bb4c766706cb753, type: 3}

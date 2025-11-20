@@ -19865,14 +19865,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2703950257263476980, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: m_Name
-      value: Dialog
-      objectReference: {fileID: 0}
-    - target: {fileID: 2703950257263476980, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4950335828945181336, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -19976,14 +19968,6 @@ PrefabInstance:
     - target: {fileID: 6113657058280838710, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6468818526838142698, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 6468818526838142698, guid: 7e2267771031ba84dae32b3d141a7204, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

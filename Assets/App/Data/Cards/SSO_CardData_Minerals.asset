@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cde44ed427870940acbdf7aa710dd45, type: 3}
   m_Name: SSO_CardData_Minerals
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Minerals
-  cardName: Boue
-  cardDescription: 'Lorsque la Boue est en contact avec l''Eau, elle se transforme
-    en Marais.
+  cardName: Mud
+  cardDescription: '* Extract from Grimoire *
+
+    When the Mud is in contact with
+    Water, it transforms into a Swamp.
 
 '
   cardPrefabs:

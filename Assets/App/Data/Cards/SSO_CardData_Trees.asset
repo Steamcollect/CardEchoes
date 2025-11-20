@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0f78b4dfd5e7b478d7bb9ad751be5a, type: 3}
   m_Name: SSO_CardData_Trees
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Trees
-  cardName: Foret
-  cardDescription: "Les Forets absorbent l\u2019eau des Marais, les transformant
-    en Herbes Fraiches."
+  cardName: Forest
+  cardDescription: '* Extract from Grimoire *
+
+    Forests absorb the water from
+    Swamps, transforming them into Fresh Grass.'
   cardPrefabs:
   - {fileID: 1452492152572843911, guid: 1258659cd6c47e6429510580f92dc2aa, type: 3}
   - {fileID: 1452492152572843911, guid: 84d9ec501ecee8349a27fb55d36a023a, type: 3}

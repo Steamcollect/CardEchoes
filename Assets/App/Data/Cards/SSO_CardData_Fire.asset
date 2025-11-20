@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16c28442a6f3bd4892bd5d7d51c1345, type: 3}
   m_Name: SSO_CardData_Fire
   m_EditorClassIdentifier: Assembly-CSharp::SSO_CardData_Fire
-  cardName: Feux de Foret
-  cardDescription: "Les flammes s\u2019etendent a tous les arbres adjacents.\nLorsque
-    les flammes s'eteignent, il ne reste que de la Boue.\n"
+  cardName: Fire
+  cardDescription: '* Extract from Grimoire *
+
+    The flames spread to all adjacent
+    Forests.
+
+    When the flames go out, only Mud remains.
+
+'
   cardPrefabs:
   - {fileID: 6708235103482805930, guid: bb1bcb6a4c92e9449b9471644fe74bbd, type: 3}
   - {fileID: 6708235103482805930, guid: f7fffdaa1aff58b4a8f790e50371016e, type: 3}
