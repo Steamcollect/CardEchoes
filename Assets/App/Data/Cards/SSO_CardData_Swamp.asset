@@ -16,5 +16,7 @@ MonoBehaviour:
   cardDescription: 
   cardPrefabs:
   - {fileID: -3780712894497361261, guid: 8f3b3e328a1e1f5419a083e5673ccb45, type: 3}
+  - {fileID: -3780712894497361261, guid: 52cf2ef9285c62b46b486f4d2750cd05, type: 3}
+  - {fileID: -3780712894497361261, guid: b1655dfab85530d4f9188e95f87576cc, type: 3}
   cardUIIcon: {fileID: 7973581466050816231, guid: 12c72939043bd62429976553ab5f8cf6, type: 3}
   cardsAvailable: {fileID: 11400000, guid: 28c7414a6f4958741963d09bd8dc08ad, type: 2}

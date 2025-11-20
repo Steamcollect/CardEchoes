@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SSO_CardData_Swamp", menuName = "SSO/Cards/SSO_CardData_Swamp")]
 public class SSO_CardData_Swamp : SSO_CardData
 {
-    /*public override void ApplyEffectToNeighbour(Card card, Transform content)
+    public override void ApplyEffectToNeighbour(Card card, Transform content)
     {
         Card[] neighbours = card.GetNeighbours();
 
@@ -19,8 +19,10 @@ public class SSO_CardData_Swamp : SSO_CardData
             {
                 currentPriority = 1;
                 currentData = cardsAvailable.Water;
+                Debug.Log("Swamp Priority 1");
+                break;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 2)
+            /*else if (neighbours[i].GetData() is SSO_CardData_Trees && currentPriority > 2)
             {
                 currentPriority = 2;
                 currentData = cardsAvailable.Plant;
@@ -39,12 +41,15 @@ public class SSO_CardData_Swamp : SSO_CardData
             {
                 currentPriority = 5;
                 currentData = cardsAvailable.Swamp;
-            }
+            }*/
+            return;
         }
 
-        if (currentData != cardsAvailable.Swamp)
+        if (currentData != cardsAvailable.Water)
+        {
             card = ReplaceCards(card, currentData, content);
+        }
 
         card.WaveShake();
-    }*/
-}
+    }
+        }

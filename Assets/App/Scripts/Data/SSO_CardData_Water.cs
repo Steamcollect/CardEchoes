@@ -1,4 +1,5 @@
 using ToolBox.Utils;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SSO_CardData_Water", menuName = "SSO/Cards/SSO_CardData_Water")]
@@ -20,33 +21,41 @@ public class SSO_CardData_Water : SSO_CardData
             {
                 currentPriority = 1;
                 currentData = cardsAvailable.Swamp;
+                Debug.Log("Water Priority 1");
                 break;
             }
-            else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 2)
-            {
-                currentPriority = 2;
-                currentData = cardsAvailable.Water;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 3)
-            {
-                currentPriority = 3;
-                currentData = cardsAvailable.Water;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 4)
-            {
-                currentPriority = 4;
-                currentData = cardsAvailable.Water;
-            }
-            else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 5)
-            {
-                currentPriority = 5;
-                currentData = cardsAvailable.Water;
-            }
+           /*else if (neighbours[i].GetData() is SSO_CardData_Swamp && currentPriority > 2)
+           {
+               currentPriority = 2;
+               currentData = cardsAvailable.Water;
+               Debug.Log("Water Priority 2");
+               break;
+           }
+           else if (neighbours[i].GetData() is SSO_CardData_Water && currentPriority > 3)
+           {
+               currentPriority = 3;
+               currentData = cardsAvailable.Water;
+               Debug.Log("Water Priority 3");
+           }
+           else if (neighbours[i].GetData() is SSO_CardData_Plants && currentPriority > 4)
+           {
+               currentPriority = 4;
+               currentData = cardsAvailable.Water;
+               Debug.Log("Water Priority 4");
+           }
+           else if (neighbours[i].GetData() is SSO_CardData_Minerals && currentPriority > 5)
+           {
+               currentPriority = 5;
+               currentData = cardsAvailable.Water;
+               Debug.Log("Water Priority 5");
+           }*/
+            return;
         }
 
         if (currentData != cardsAvailable.Water)
+        {
             card = ReplaceCards(card, currentData, content);
-
-        card.WaveShake();
+        }
+            card.WaveShake();
     }
 }
