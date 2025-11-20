@@ -245,7 +245,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c91b4ef14a0e2ae4cbea858304d185be, type: 2}
+  - {fileID: 2100000, guid: 93256596808e98c44824712f0782af1c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 3224751846637581339}
   - component: {fileID: -3780712894497361261}
   m_Layer: 0
-  m_Name: Card_Swamp_1
+  m_Name: Card_Swamp_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
