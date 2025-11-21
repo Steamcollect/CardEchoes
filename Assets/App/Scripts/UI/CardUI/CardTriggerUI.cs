@@ -10,7 +10,10 @@ public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] float shakeDuration = 0.2f;
     [SerializeField] float hoverScale = 1.1f;
 
-    //[Header("References")]
+    [Header("References")]
+
+    [SerializeField] Sound tileOnHand;
+
     //[Header("Input")]
     [Header("Output")]
     public Action _OnPointerEnter, _OnPointerExit, _OnPointerClick;
@@ -26,6 +29,7 @@ public class CardTriggerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         transform.DOPunchRotation(Vector3.forward * shakeAngle, shakeDuration, 20, 1);
         transform.DOScale(hoverScale, shakeDuration).SetEase(Ease.OutBack);
         _OnPointerEnter?.Invoke();
+        AudioManager.Instance.PlayClipAt(tileOnHand, Vector3.zero);
     }
 
     public void OnPointerExit(PointerEventData eventData)

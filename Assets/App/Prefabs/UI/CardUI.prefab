@@ -90,6 +90,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardTriggerUI
   shakeAngle: 8
   shakeDuration: 0.15
+  hoverScale: 1.1
+  tileOnHand:
+    volumeMultiplier: 0.05
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: 776810d017a42344bb275422bac69d75, type: 3}
+    - {fileID: 8300000, guid: c318fb8d942cbf44097751504b36d3e0, type: 3}
+    - {fileID: 8300000, guid: ce12272186ce2a54ba371355b42ac0ca, type: 3}
+    - {fileID: 8300000, guid: b54837956e0af994ebf6204ac8524c2f, type: 3}
+    - {fileID: 8300000, guid: 1e5ba6b296108744ea51509ff916670a, type: 3}
+    - {fileID: 8300000, guid: a6ab8e9dc5f87c04b804720e8f609299, type: 3}
+    - {fileID: 8300000, guid: b8b83f695f0291647b72afabadf9d541, type: 3}
+    - {fileID: 8300000, guid: 4c162efcb66919045bc2fc145504b5b3, type: 3}
+    - {fileID: 8300000, guid: bfc56da38499b014fb433d22d88d9f39, type: 3}
+    - {fileID: 8300000, guid: 18a554d884ca6d941b1ee93914dcecf2, type: 3}
+    - {fileID: 8300000, guid: 0c343086127ba3d4da190991a9958c59, type: 3}
+    - {fileID: 8300000, guid: 34c097dd99fa29c418757415f7aa3641, type: 3}
+    - {fileID: 8300000, guid: 58b4ede85eba9104d81f8d6e961b7f09, type: 3}
 --- !u!1 &8084397126056396554
 GameObject:
   m_ObjectHideFlags: 0
