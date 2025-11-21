@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 68820f2a39d5add4790145721c6e2931
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Water: {instanceID: 0}
+  - Mineral: {instanceID: 0}
+  - Plant: {instanceID: 0}
+  - Tree: {instanceID: 0}
+  - Swamp: {instanceID: 0}
+  - Fire: {instanceID: 0}
+  - House: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
