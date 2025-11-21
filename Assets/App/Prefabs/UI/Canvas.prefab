@@ -1507,9 +1507,17 @@ MonoBehaviour:
     place my village in a perfect location.'
   - "* Extract from the Grimoire * \n\nPlace cards on the parchment\nin order to
     manipulate the environment.\nEach card allows one to transform nature."
+  - 'Hmm...
+
+    I wonder how I can use this parchment to
+
+    strategically build
+    my perfect environment.
+
+    Where should I place the first card?'
   conditionWinTexts:
-  - "Super, maintenant que j'ai trouv\xE9 un coin sympa\nJe vais pouvoir poser ma
-    maison !"
+  - "Wow, look at this! \nThis spot is absolutely perfect for the village. \nI can
+    already see it!"
   introductionPanelGO: {fileID: 2703950257263476980}
   introductionTxt: {fileID: 3115648910406446628}
   cardsContentAnim: {fileID: 1053129774387670473}
