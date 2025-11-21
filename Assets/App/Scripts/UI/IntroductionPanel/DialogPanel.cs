@@ -1,5 +1,6 @@
 using DG.Tweening;
 using TMPro;
+using ToolBox.Dev;
 using UnityEngine;
 
 public class DialogPanel : MonoBehaviour
@@ -12,6 +13,7 @@ public class DialogPanel : MonoBehaviour
     [SerializeField] GameObject introductionPanelGO;
     [SerializeField] TMP_Text introductionTxt;
     [SerializeField] Animator cardsContentAnim;
+    [SerializeField] Sound buttonSound;
 
     public static DialogPanel Instance;
 
@@ -56,5 +58,6 @@ public class DialogPanel : MonoBehaviour
         {
             introductionTxt.text = introductionTexts[i];
         }
+        AudioManager.Instance.PlayClipAt(buttonSound, Vector3.zero);
     }
 }
