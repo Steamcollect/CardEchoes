@@ -2726,6 +2726,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad050d704c9beda4abc2b2a62246466e, type: 2}
   cardUIPrefabs: {fileID: 5914906418974657700, guid: 34de509c13fe9dd41915f0395ba09f9b, type: 3}
   cardsContent: {fileID: 6056357130987632696}
+  houseData: {fileID: 11400000, guid: 8d2fa6e310b0b92458cbf75152c15d37, type: 2}
 --- !u!114 &7960723787807929067
 MonoBehaviour:
   m_ObjectHideFlags: 0

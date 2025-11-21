@@ -4,6 +4,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     //[Header("Settings")]
+    bool isComplete = false;
+    
     [Header("References")]
     [SerializeField] SSO_ScoreTargetData scoreTargetData;
     [SerializeField] SSO_CardData_House houseCardData;
@@ -25,6 +27,8 @@ public class ScoreManager : MonoBehaviour
 
     public bool CheckVictoryCondition(Dictionary<Vector2Int, Card> cards)
     {
+        if (isComplete) return false;
+
         int totalCards = cards.Count;
 
         // Vérifie qu'on a le minimum de cartes posées avant de tester les pourcentages
@@ -66,6 +70,7 @@ public class ScoreManager : MonoBehaviour
         InventoryManager.Instance.AddCard(houseCardData);
         DialogPanel.Instance.SetConditionWinPanel();
 
+        isComplete = true;
         return true;
     }
 
