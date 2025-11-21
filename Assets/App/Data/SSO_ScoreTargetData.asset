@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SSO_ScoreTargetData
   m_EditorClassIdentifier: Assembly-CSharp::SSO_ScoreTargetData
   Tree_minMaxTargetPercenage: {x: 30, y: 70}
-  Swamp_minMaxTargetPercenage: {x: 5, y: 15}
-  Plant_minMaxTargetPercenage: {x: 10, y: 25}
-  Water_minMaxTargetPercenage: {x: 30, y: 70}
+  Swamp_minMaxTargetPercenage: {x: 10, y: 20}
+  Plant_minMaxTargetPercenage: {x: 20, y: 40}
+  Water_minMaxTargetPercenage: {x: 20, y: 60}
   Mineral_minMaxTargetPercenage: {x: 0, y: 15}
   minimumCardCount: 30
