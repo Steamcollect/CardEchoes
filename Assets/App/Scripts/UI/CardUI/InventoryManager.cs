@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     [Header("References")]
     [SerializeField] CardControllerUI cardUIPrefabs;
     [SerializeField] Transform cardsContent;
+    [SerializeField] SSO_CardData_House houseData;
 
     List<CardControllerUI> currentCards = new List<CardControllerUI>();
 
@@ -36,6 +37,33 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < startingCardCount; i++)
         {
             AddNewCard();
+        }
+    }
+
+    public void AddHouseCard()
+    {
+        CardControllerUI newCardUI = Instantiate(cardUIPrefabs, cardsContent);
+        newCardUI.Setup(houseData);
+        currentCards.Add(newCardUI);
+
+        // Update visuals
+        int total = cardsContent.childCount;
+        int midIndex = (total - 1) / 2;
+        if (total == 0) return;
+
+        for (int i = 0; i < total; i++)
+        {
+            Transform child = cardsContent.GetChild(i);
+
+            if (child.TryGetComponent(out CardControllerUI card))
+            {
+                float t = (total == 1) ? 0f : (float)i / (total - 1);
+
+                float angle = (i > midIndex ? -1 : 1) * angleModifierCurve.Evaluate(t) * maxCardAngle;
+                float yOffset = posModifierCurve.Evaluate(t) * maxCardYOffset;
+
+                card.UpdateVisual(angle, yOffset);
+            }
         }
     }
 

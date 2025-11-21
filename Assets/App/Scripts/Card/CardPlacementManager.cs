@@ -526,8 +526,9 @@ public class CardPlacementManager : MonoBehaviour
 
         ConditionPanel.Instance.UpdateSliders(cards);
 
-        ScoreManager.Instance.CheckVictoryCondition(cards);
-        InventoryManager.Instance.AddNewCard();
+        if (ScoreManager.Instance.CheckVictoryCondition(cards))
+            InventoryManager.Instance.AddHouseCard();
+        else InventoryManager.Instance.AddNewCard();
 
         canPlaceCard = true;
     }
