@@ -693,7 +693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5819481017585635490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -707,13 +707,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 534441255864852530}
-  - {fileID: 6984122352064946670}
+  - {fileID: 6228167815585911983}
   m_Father: {fileID: 6113657058280838710}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4007452148765597221
 GameObject:
@@ -1065,7 +1065,7 @@ RectTransform:
   - {fileID: 6658605367947889772}
   - {fileID: 2131821034628473656}
   - {fileID: 7475508778177625192}
-  m_Father: {fileID: 5819481017585635490}
+  m_Father: {fileID: 6228167815585911983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1322,8 +1322,8 @@ RectTransform:
   m_Children:
   - {fileID: 6056357130987632696}
   - {fileID: 802258761094298554}
-  - {fileID: 5819481017585635490}
   - {fileID: 2070581406114567343}
+  - {fileID: 5819481017585635490}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1556,8 +1556,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 410, y: -178.91}
-  m_SizeDelta: {x: 490.83, y: 0}
+  m_AnchoredPosition: {x: 410, y: -60}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4755210729950025959
 CanvasRenderer:
@@ -1587,21 +1587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ceci est un text tres tres long
-
-    fezef
-
-    fezfe
-
-    efEZfesfvsefesf
-
-    effzesfsef
-
-    fesesesfesfesves
-
-    esesfsf
-
-    fessef'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd3577138fd5b3345a043fc68eb7cc00, type: 2}
   m_sharedMaterial: {fileID: -6558723994620984583, guid: bd3577138fd5b3345a043fc68eb7cc00, type: 2}
@@ -1867,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbda167bfaf07524c8f804aa5d7222db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
-  menuPause: {fileID: 4553386485571659206}
+  menuPause: {fileID: 8357390795274365507}
   pauseInput: {fileID: 7510961661746739378, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &5801379724039432795
 GameObject:
@@ -2813,6 +2799,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TooltipBehaviour
   offsetTooltip: {x: 0, y: 130, z: 0}
   tooltip: {fileID: 205484259845446237}
+--- !u!1 &8357390795274365507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6228167815585911983}
+  - component: {fileID: 7026223875257444258}
+  - component: {fileID: 8427364430282133713}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &6228167815585911983
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357390795274365507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6984122352064946670}
+  m_Father: {fileID: 5819481017585635490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7026223875257444258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357390795274365507}
+  m_CullTransparentMesh: 1
+--- !u!114 &8427364430282133713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357390795274365507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.70980394}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8393004708246351230
 GameObject:
   m_ObjectHideFlags: 0

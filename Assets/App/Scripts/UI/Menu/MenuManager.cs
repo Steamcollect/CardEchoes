@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
     }
     public void PauseGame()
     {
+        Debug.Log("PauseGame");
         if (menuPause != null)
         {
             menuPause.SetActive(true);
