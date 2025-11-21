@@ -178,6 +178,14 @@ public class CardPlacementManager : MonoBehaviour
                 neighbour.SetNeighbours(neighNeighbours);
             }
         }
+
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForSeconds(.1f);
+        ConditionPanel.Instance.UpdateSliders(cards);
     }
 
     private void Update()
@@ -516,8 +524,9 @@ public class CardPlacementManager : MonoBehaviour
         }
         while(iterations <= maxIteration);
 
-        ScoreManager.Instance.CheckVictoryCondition(cards);
+        ConditionPanel.Instance.UpdateSliders(cards);
 
+        ScoreManager.Instance.CheckVictoryCondition(cards);
         InventoryManager.Instance.AddNewCard();
 
         canPlaceCard = true;

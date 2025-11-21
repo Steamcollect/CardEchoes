@@ -18,6 +18,11 @@ public class ScoreManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        ConditionPanel.Instance.SetTarget(scoreTargetData);
+    }
+
     public bool CheckVictoryCondition(Dictionary<Vector2Int, Card> cards)
     {
         int totalCards = cards.Count;
