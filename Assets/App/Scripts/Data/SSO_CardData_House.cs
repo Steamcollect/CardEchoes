@@ -12,11 +12,12 @@ public class SSO_CardData_House : SSO_CardData
 
         for (int i = 0; i < neighbours.Length; i++)
         {
-            if (neighbours[i] != null)
-            {
-                Debug.Log("Condition Maison Fire");
-                continue;
-            }
+            Card neighbour = neighbours[i];
+            if (neighbour == null) continue;
+
+            var neighbourData = neighbour.GetData();
+            if (neighbourData == null) continue;
+
             if (neighbours[i].GetData() is SSO_CardData_Fire && currentPriority > 1)
             {
                 currentPriority = 1;
