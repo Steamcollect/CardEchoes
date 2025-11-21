@@ -1854,6 +1854,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   menuPause: {fileID: 8357390795274365507}
+  menuSound:
+    volumeMultiplier: 0.7
+    spatialBlend: 0
+    clips:
+    - {fileID: 8300000, guid: b1fa11093b7176c4aa59e892a3441be4, type: 3}
   pauseInput: {fileID: 7510961661746739378, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &5801379724039432795
 GameObject:

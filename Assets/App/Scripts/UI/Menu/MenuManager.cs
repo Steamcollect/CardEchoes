@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     //[Header("References")]
 
     [SerializeField] private GameObject menuPause;
+    [SerializeField] private Sound menuSound;
 
     //[Header("Input")]
 
@@ -39,12 +40,12 @@ public class MenuManager : MonoBehaviour
     }
     public void PauseGame()
     {
-        Debug.Log("PauseGame");
         if (menuPause != null)
         {
             menuPause.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
+            AudioManager.Instance.PlayClipAt(menuSound, Vector3.zero);
         }
     }
 
@@ -55,17 +56,20 @@ public class MenuManager : MonoBehaviour
             menuPause.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
+            AudioManager.Instance.PlayClipAt(menuSound, Vector3.zero);
         }
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        AudioManager.Instance.PlayClipAt(menuSound, Vector3.zero);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
+        AudioManager.Instance.PlayClipAt(menuSound, Vector3.zero);
         Application.Quit();
     }
 }
