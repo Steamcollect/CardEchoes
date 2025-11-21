@@ -160,7 +160,7 @@ MonoBehaviour:
   shakeDuration: 0.15
   zoomInput: {fileID: 8172552489930227883, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   zoomSpeed: 0.7
-  minMaxZoomDistance: {x: -5, y: 2}
+  minMaxZoomDistance: {x: -3, y: 2}
   moveInput: {fileID: -968839699552669771, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &8402032587530679350
 GameObject:
